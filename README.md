@@ -1,4 +1,4 @@
-# Manual de Instalacion
+# Manual de Instalacion.
 Esta documentación proporciona una guía sobre cómo Instalar para gestionar y realizar la migración.
 
 ## Prerrequisitos
