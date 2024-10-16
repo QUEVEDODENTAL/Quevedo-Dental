@@ -159,8 +159,4 @@ http://192.168.1.100:3000
 
 ---
 
-## Resumen
 
-Siguiendo los pasos anteriores, deberías tener el proyecto completamente configurado y funcionando tanto en tu máquina local como en otros dispositivos de la red. Si encuentras algún problema durante el proceso, asegúrate de revisar los mensajes de error y verificar que todos los requisitos previos se han instalado correctamente.
-
----
