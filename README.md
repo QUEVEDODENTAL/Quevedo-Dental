@@ -6,17 +6,8 @@ Asegúrate de tener instalado:
 
 ## Instalación de Prisma
 
-### Paso 1: Inicializa tu proyecto
 
-Si aún no tienes un proyecto de Node.js, crea uno nuevo:
-
-```bash
-mkdir nombre-del-proyecto
-cd nombre-del-proyecto
-npm init -y
-```
-
-### Paso 2: Instala Prisma CLI y el cliente de Prisma
+### Paso 1: Instala Prisma CLI y el cliente de Prisma
 
 Ejecuta el siguiente comando para instalar Prisma como dependencia de desarrollo:
 
@@ -123,21 +114,9 @@ main()
   });
 ```
 
-## Comandos útiles
+## Comando para ver la base de datos prisma
 
 - **Iniciar el shell de Prisma:**  
   ```bash
   npx prisma studio
   ```
-
-- **Ver la configuración de Prisma:**  
-  ```bash
-  npx prisma config
-  ```
-
-## Notas
-
-- Asegúrate de revisar la [documentación oficial de Prisma](https://www.prisma.io/docs) para más detalles sobre características avanzadas y mejores prácticas.
-- Si tienes problemas específicos, consulta la [sección de soluciones](https://www.prisma.io/docs/troubleshooting) en la documentación.
-
----
