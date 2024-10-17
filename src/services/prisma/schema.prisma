@@ -1,0 +1,215 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model antecedentes_no_patologicos {
+  PatientId      Int                                      @id
+  Smoking        antecedentes_no_patologicos_Smoking
+  SubstanceAbuse antecedentes_no_patologicos_SubstanceAbuse
+  Alcoholism     antecedentes_no_patologicos_Alcoholism
+  Sedentary      antecedentes_no_patologicos_Sedentary
+  Surgeries      String?                                  @db.VarChar(255)
+  Exercise       String?                                  @db.VarChar(255)
+}
+
+model antecedentes_patologicos {
+  id            Int                                 @id @default(autoincrement())
+  PatientId     Int?
+  Disease       String                              @db.VarChar(255)
+  DiagnosisDate DateTime                            @db.Date
+  DiseaseType   antecedentes_patologicos_DiseaseType
+  Chronic       antecedentes_patologicos_Chronic
+  Treatment     String?                             @db.VarChar(255)
+  Observations  String?                             @db.VarChar(255)
+
+  @@index([PatientId], map: "paciente_id")
+}
+
+model bitacora {
+  LogId       Int      @id @default(autoincrement())
+  DateTime    DateTime @default(now()) @db.Timestamp(0)
+  User        String   @db.VarChar(255)
+  Action      String   @db.VarChar(255)
+  Tabla       String?  @db.VarChar(255)
+  RecordId    Int?
+  Description String?  @db.VarChar(255)
+}
+
+model clientes {
+  id         Int       @id @default(autoincrement())
+  Name       String    @db.VarChar(100)
+  LastName   String    @db.VarChar(100)
+  SEX        String    @db.Char(9)
+  Age        Int
+  BirthDate  DateTime? @db.Date
+  Address    String?   @db.VarChar(255)
+  Phone      String?   @db.VarChar(20)
+  CURP       String    @db.VarChar(18)
+  Email      String?   @db.VarChar(100)
+  BloodType  String    @db.VarChar(3)
+  Occupation String    @db.VarChar(255)
+  Education  String    @db.VarChar(255)
+}
+
+model doctor {
+  id             Int            @id @default(autoincrement())
+  Name           String         @db.VarChar(50)
+  LastName       String         @db.VarChar(50)
+  Age            Int?
+  BirthDate      DateTime?      @db.Date
+  Gender         doctor_Gender?
+  Specialty      String?        @db.VarChar(100)
+  Address        String?        @db.VarChar(255)
+  Cellphone      String?        @db.VarChar(20)
+  CURP           String?        @db.VarChar(18)
+  LicenseNumber  String?        @db.VarChar(12)
+  Sex            String?        @db.VarChar(10)
+  MedicalLicense String?        @db.VarChar(100)
+  Email          String         @unique @db.VarChar(150)
+  HireDate       DateTime       @db.Date
+}
+
+model empleado {
+  id        Int              @id @default(autoincrement())
+  Name      String           @db.VarChar(50)
+  LastName  String           @db.VarChar(50)
+  BirthDate DateTime?        @db.Date
+  Gender    empleado_Gender?
+  Cellphone String?          @db.VarChar(20)
+  Email     String           @unique @db.VarChar(100)
+  Address   String?          @db.VarChar(255)
+  Position  String?          @db.VarChar(100)
+  CURP      String?          @db.VarChar(18)
+  RFC       String?
+  Salary    Decimal?         @db.Decimal(10, 2)
+  HireDate  DateTime?        @db.Date
+}
+
+model enfermedades {
+  DiseaseId   Int                      @id @default(autoincrement())
+  DiseaseType enfermedades_DiseaseType
+  Other       String                   @db.Text
+  Causes      String                   @db.Text
+  Symptoms    String                   @db.Text
+  Treatment   String                   @db.Text
+}
+
+model examen_clinico_intraoral {
+  PatientId       Int      @id
+  ExaminationDate DateTime @db.Date
+  Gums            String   @db.VarChar(255)
+  Tongue          String   @db.VarChar(255)
+  HardPalate      String   @db.VarChar(255)
+  SoftPalate      String   @db.VarChar(255)
+  Pharynx         String   @db.VarChar(255)
+  FloorOfMouth    String   @db.VarChar(255)
+  ResidualRidge   String   @db.VarChar(255)
+  OcclusionType   String   @db.VarChar(255)
+  Observations    String?  @db.VarChar(255)
+}
+
+model historial_clinico {
+  HistoryId        Int       @id @default(autoincrement())
+  ClientId         Int?
+  DentistId        Int?
+  ConsultationDate DateTime? @db.Date
+  ClinicalData     Json?
+
+  @@index([ClientId], map: "cliente_id")
+  @@index([DentistId], map: "dentista_id")
+}
+
+model permisos {
+  ID          Int    @id @default(autoincrement())
+  Permission  String @db.VarChar(255)
+  Description String @db.VarChar(255)
+}
+
+model usuarios {
+  Id              Int     @id @default(autoincrement())
+  Email           String  @unique @db.VarChar(100)
+  Password        String  @db.VarChar(100)
+  IsAdministrator Boolean @default(false)
+  IsDoctor        Boolean @default(false)
+  IsEmployee      Boolean @default(false)
+}
+
+model servicios {
+  Id           Int     @id @default(autoincrement())
+  Service_Name String  @db.VarChar(100)
+  Price        Decimal @db.Decimal(10, 2)
+}
+
+enum antecedentes_no_patologicos_Smoking {
+  Si
+  No
+}
+
+enum enfermedades_DiseaseType {
+  Cardiovasculares
+  Hematol_gicas               @map("Hematológicas")
+  Neurol_gicas                @map("Neurológicas")
+  Pulmonares
+  Endocrinas
+  Metab_licas                 @map("Metabólicas")
+  Renales
+  Mentales
+  Gastrointestinales
+  Dermatol_gicas              @map("Dermatológicas")
+  C_ncer                      @map("Cáncer")
+  Otros
+  ENFERMEDADES_DE_LA_INFANCIA @map("ENFERMEDADES DE LA INFANCIA")
+}
+
+enum antecedentes_no_patologicos_SubstanceAbuse {
+  Si
+  No
+}
+
+enum antecedentes_no_patologicos_Alcoholism {
+  Si
+  No
+}
+
+enum antecedentes_no_patologicos_Sedentary {
+  Si
+  No
+}
+
+enum antecedentes_patologicos_DiseaseType {
+  Cardiovasculares
+  Hematol_gicas               @map("Hematológicas")
+  Neurol_gicas                @map("Neurológicas")
+  Pulmonares
+  Endocrinas
+  Metab_licas                 @map("Metabólicas")
+  Renales
+  Mentales
+  Gastrointestinales
+  Dermatol_gicas              @map("Dermatológicas")
+  C_ncer                      @map("Cáncer")
+  Otros
+  ENFERMEDADES_DE_LA_INFANCIA @map("ENFERMEDADES DE LA INFANCIA")
+}
+
+enum empleado_Gender {
+  Masculino
+  Femenino
+  Otro
+}
+
+enum antecedentes_patologicos_Chronic {
+  Si
+  No
+}
+
+enum doctor_Gender {
+  Masculino
+  Femenino
+  Otro
+}
