@@ -2,6 +2,6 @@
 
 html, body {
   margin: 0;
-  height: auto; /* Cambia esto para que el body crezca con el contenido */
-  overflow: auto; /* Permite el desplazamiento */
+  height: auto;
+  overflow: auto;
 }
