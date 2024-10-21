@@ -10,7 +10,6 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background-color: #f9f9f9;
   }
   
   .banner-content {
@@ -30,7 +29,7 @@
     font-size: 3rem;
     font-weight: bold;
     color: #133c55;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
   }
   
   .banner-description {
@@ -55,8 +54,8 @@
   .banner-placeholder {
     flex: 1;
     width: 300px;
-    height: 200px;
-    background-color: pink; /* Color rosa para marcar el área de la imagen */
+    height: 300px;
+    background-color: pink;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -101,11 +100,9 @@
   .image-placeholder {
     width: 200px;
     height: 200px;
-    background-color: lightblue; /* Color azul para marcar el espacio de las imágenes */
+    background-color: lightblue;
     border-radius: 10px;
   }
-  
-  /* Otros estilos */
   h1 {
     color: #133c55;
   }

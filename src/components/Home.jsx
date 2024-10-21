@@ -21,28 +21,12 @@ const Home = () => {
             <button className="banner-button">Conócenos</button>
           </div>
           <div className="banner-placeholder">
-            {/* Este div será el espacio para la imagen */}
+            <h1>
+              Imagen del doctor 1
+            </h1>
           </div>
         </div>
       </div>
-
-      {/* Sección de Servicios */}
-      <h1>Bienvenido a Quevedo Dental</h1>
-      <p>
-        En nuestra clínica dental, nos dedicamos a proporcionar la mejor atención 
-        a nuestros pacientes. Nuestros servicios incluyen:
-      </p>
-      <ul>
-        <li>Exámenes dentales</li>
-        <li>Blanqueamiento dental</li>
-        <li>Ortodoncia</li>
-        <li>Implantes dentales</li>
-        <li>Y más...</li>
-      </ul>
-      <p>
-        ¡No dudes en ponerte en contacto con nosotros para más información o para 
-        agendar tu cita!
-      </p>
 
       {/* Sección Sobre Nosotros */}
       <section className="sobre-nosotros-container">
@@ -63,8 +47,16 @@ const Home = () => {
             </p>
           </div>
           <div className="sobre-nosotros-images">
-            <div className="image-placeholder"></div>
-            <div className="image-placeholder"></div>
+            <div className="image-placeholder">
+              <h2>
+                imagen 1
+              </h2>
+            </div>
+            <div className="image-placeholder">
+              <h2>
+                imagen 2
+              </h2>
+            </div>
           </div>
         </div>
       </section>
