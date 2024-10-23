@@ -5,7 +5,7 @@ const Login = () => {
     <div className="login-container">
       <h1>Inicio de Sesión</h1>
 
-      <form className='contorno'>
+      <form className="form-container">
         <div className="form-group">
           <input
             type="text"
@@ -20,10 +20,11 @@ const Login = () => {
             type="password"
             id="password"
             name="password"
-            placeholder="ingresa la contraseña"
+            placeholder="Ingresa la contraseña"
             required
           />
         </div>
+        <hr className="login-divider" />
         <button type="submit" className="login-button">Iniciar Sesión</button>
       </form>
     </div>
