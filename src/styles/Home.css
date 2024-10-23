@@ -16,8 +16,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
+    width: 98%;
   }
   
   .banner-text {
@@ -26,7 +25,7 @@
   }
   
   .banner-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: bold;
     color: #133c55;
     margin-bottom: 1rem;
@@ -40,16 +39,19 @@
   .banner-button {
     background-color: #133c55;
     color: #fff;
+    font-size: 1rem;
     font-weight: bold;
-    padding: 10px 20px;
+    padding: 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Añadida la transición */
   }
   
   .banner-button:hover {
     background-color: #0f2a42;
   }
+  
   
   .banner-placeholder {
     flex: 1;
@@ -64,7 +66,6 @@
   
   /* Estilos para la sección Sobre Nosotros */
   .sobre-nosotros-container {
-    background-color: #f5f5f5;
     padding: 40px;
     margin-top: 50px;
   }
@@ -88,7 +89,6 @@
   
   .sobre-nosotros-text p {
     font-size: 1.2rem;
-    color: #666;
     margin-bottom: 20px;
   }
   
@@ -103,6 +103,19 @@
     background-color: lightblue;
     border-radius: 10px;
   }
+
+  /* Estilos para la sección Nuestro Equipo */
+  .nuestro-equipo-container {
+    padding: 40px;
+    margin-top: 50px;
+  }
+
+  .nuestro-equipo-title {
+    font-size: 2.5rem;
+    color: #133c55;
+    margin-bottom: 20px;
+  }
+
   h1 {
     color: #133c55;
   }

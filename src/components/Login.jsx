@@ -5,16 +5,26 @@ const Login = () => {
     <div className="login-container">
       <h1>Inicio de Sesión</h1>
 
-      <form>
-        <div>
-          <label htmlFor="username">Usuario:</label>
-          <input type="text" id="username" name="username" required />
+      <form className='contorno'>
+        <div className="form-group">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Ingresa el usuario"
+            required
+          />
         </div>
-        <div>
-          <label htmlFor="password">Contraseña:</label>
-          <input type="password" id="password" name="password" required />
+        <div className="form-group">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="ingresa la contraseña"
+            required
+          />
         </div>
-        <button type="submit">Iniciar Sesión</button>
+        <button type="submit" className="login-button">Iniciar Sesión</button>
       </form>
     </div>
   );

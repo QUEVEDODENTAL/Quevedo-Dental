@@ -1,0 +1,70 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+    font-family: "Poppins", sans-serif;
+}
+
+h1 {
+    color: #1877f2;
+    margin-bottom: 20px;
+}
+
+.contorno {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 400px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input:focus {
+    border-color: #1877f2;
+    outline: none;
+}
+
+form {
+    display: flex; /* Cambiado a flex */
+    flex-direction: column;
+    align-items: center; /* Centrar elementos horizontalmente */
+}
+
+.login-button {
+    background-color: #133c55;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    width: 100%; /* Hacer que el botón ocupe todo el ancho del formulario */
+    max-width: 400px; /* Limitar el ancho máximo del botón */
+}
+
+.login-button:hover {
+    background-color: #0f2a42;
+}
+
+input::placeholder {
+    color: #999;
+    opacity: 1;
+}

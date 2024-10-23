@@ -1,6 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import '../styles/Home.css';
+import CardsPersonal from './Cardspersonal';
 
 const Home = () => {
+  const navigate = useNavigate(); // Hook para la navegación
+
+  const handleLoginRedirect = () => {
+    navigate('/login'); // Reemplaza '/login' con la ruta correcta a tu componente de Login
+  };
+
   return (
     <div className="home-container">
       {/* Sección del Banner */}
@@ -18,7 +26,9 @@ const Home = () => {
               archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
               de las industrias desde el año 1500
             </p>
-            <button className="banner-button">Conócenos</button>
+            <button className="banner-button" onClick={handleLoginRedirect}>
+              Conócenos
+            </button>
           </div>
           <div className="banner-placeholder">
             <h1>
@@ -59,6 +69,12 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </section>
+      <section className="nuestro-equipo-container">
+        <h2 className="nuestro-equipo-title">
+          Nuestro equipo
+        </h2>
+        <CardsPersonal />
       </section>
     </div>
   );
