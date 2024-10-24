@@ -1,0 +1,158 @@
+.home-container {
+    padding: 20px;
+    font-family: "Poppins", sans-serif;
+    margin-top: 80px;
+    background-color: #f0f2f5;
+  }
+  
+  .banner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .banner-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 98%;
+  }
+  
+  .banner-text {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .banner-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #133c55;
+    margin-bottom: 1rem;
+  }
+  
+  .banner-description {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .banner-button {
+    background-color: #133c55;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .banner-button:hover {
+    background-color: #0f2a42;
+  }
+  
+  
+  .banner-placeholder {
+    flex: 1;
+    width: 300px;
+    height: 300px;
+    background-color: pink;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Estilos para la sección Sobre Nosotros */
+  .sobre-nosotros-container {
+    padding: 40px;
+    margin-top: 50px;
+  }
+  
+  .sobre-nosotros-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .sobre-nosotros-text {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .sobre-nosotros-text h2 {
+    font-size: 2.5rem;
+    color: #133c55;
+    margin-bottom: 20px;
+  }
+  
+  .sobre-nosotros-text p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .sobre-nosotros-images {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .image-placeholder {
+    width: 200px;
+    height: 200px;
+    background-color: lightblue;
+    border-radius: 10px;
+  }
+
+  /* Estilos para la sección Nuestro Equipo */
+  .nuestro-equipo-container {
+    padding: 40px;
+    margin-top: 50px;
+  }
+
+  .nuestro-equipo-title {
+    font-size: 2.5rem;
+    color: #133c55;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    color: #133c55;
+  }
+  
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+
+  .scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #133c55;
+    color: white;
+    padding: 10px;
+    border-radius: 20%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+  }
+
+  .scroll-to-top:hover{
+    background-color: #0f2a42;
+  }
+  
+  .arrow-up-icon {
+    font-size: 40px;
+  }
+  
+  .scroll-to-top:hover {
+    background-color: #0f2a42;
+  }
+  
+  

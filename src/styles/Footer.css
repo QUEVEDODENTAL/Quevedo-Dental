@@ -1,0 +1,29 @@
+.footer {
+  background-color: #133c55;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer p {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Añade espacio entre el icono y el texto */
+}
+
+.footer-divider {
+  border: 0;
+  border-top: 1px solid white;
+  margin: 10px 0;
+}
+
+/* Espaciado para los íconos */
+.icon-spacing {
+  margin-right: 8px;
+}
