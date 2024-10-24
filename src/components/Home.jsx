@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowUp } from 'react-icons/fa'; // Importa el icono de la flecha
+import { FaAngleDoubleUp } from 'react-icons/fa';
 import '../styles/Home.css';
 import CardsPersonal from './Cardspersonal';
 
@@ -18,10 +18,15 @@ const Home = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset > 300) {
-        setShowScroll(true);
-      } else {
+      const scrollPosition = window.pageYOffset;
+      const windowHeight = window.innerHeight; // Altura de la ventana
+      const documentHeight = document.documentElement.scrollHeight; // Altura total del documento
+
+      // Comprobamos si estamos a menos de 20 píxeles del final
+      if (documentHeight - windowHeight - scrollPosition <= 160) {
         setShowScroll(false);
+      } else {
+        setShowScroll(scrollPosition > 100);
       }
     };
 
@@ -33,6 +38,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
+
       {/* Sección del Banner */}
       <div className="banner-container">
         <div className="banner-content">
@@ -60,14 +66,26 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Sección Servicios (pendiente) */}
+      <section className="nuestro-equipo-container" id='servicios'>
+        <h2 className="nuestro-equipo-title">
+          Servicios
+        </h2>
+        <p>
+          Pendiente
+        </p>
+      </section>
+
       {/* Sección Sobre Nosotros */}
-      <section className="sobre-nosotros-container">
+      <section className="sobre-nosotros-container" id='sobre-nosotros'>
         <div className="sobre-nosotros-content">
           <div className="sobre-nosotros-text">
             <h2>Sobre Nosotros</h2>
             <p>
-              Somos un equipo de especialistas comprometidos con la salud bucal 
-              y el bienestar de nuestros pacientes...
+            Somos expertos en estrategia, diseño y desarrollo dental. 
+              Innovadores y solucionadores de problemas. Suficientemente 
+              flexibles para adaptarnos a sus necesidades, pero lo suficientemente 
+              sólidos como para ofrecer el más alto nivel de atención.
             </p>
           </div>
           <div className="sobre-nosotros-images">
@@ -86,7 +104,7 @@ const Home = () => {
       </section>
 
       {/* Sección Nuestro Equipo */}
-      <section className="nuestro-equipo-container">
+      <section className="nuestro-equipo-container" id='nuestro-equipo'>
         <h2 className="nuestro-equipo-title">
           Nuestro equipo
         </h2>
@@ -96,7 +114,7 @@ const Home = () => {
       {/* Botón para regresar al tope de la página */}
       {showScroll && (
         <div className="scroll-to-top" onClick={scrollToTop}>
-          <FaArrowUp className="arrow-up-icon" />
+          <FaAngleDoubleUp className="arrow-up-icon" />
         </div>
       )}
     </div>
