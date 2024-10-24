@@ -1,13 +1,35 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaArrowUp } from 'react-icons/fa'; // Importa el icono de la flecha
 import '../styles/Home.css';
 import CardsPersonal from './Cardspersonal';
 
 const Home = () => {
-  const navigate = useNavigate(); // Hook para la navegación
+  const navigate = useNavigate();
+  const [showScroll, setShowScroll] = useState(false);
 
   const handleLoginRedirect = () => {
-    navigate('/login'); // Reemplaza '/login' con la ruta correcta a tu componente de Login
+    navigate('/login');
   };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 300) {
+        setShowScroll(true);
+      } else {
+        setShowScroll(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div className="home-container">
@@ -45,15 +67,7 @@ const Home = () => {
             <h2>Sobre Nosotros</h2>
             <p>
               Somos un equipo de especialistas comprometidos con la salud bucal 
-              y el bienestar de nuestros pacientes. Nos destacamos por nuestra 
-              pasión por la odontología innovadora y nuestro enfoque en encontrar 
-              soluciones efectivas para cada necesidad dental.
-            </p>
-            <p>
-              Somos expertos en estrategia, diseño y desarrollo dental. 
-              Innovadores y solucionadores de problemas. Suficientemente 
-              flexibles para adaptarnos a sus necesidades, pero lo suficientemente 
-              sólidos como para ofrecer el más alto nivel de atención.
+              y el bienestar de nuestros pacientes...
             </p>
           </div>
           <div className="sobre-nosotros-images">
@@ -70,12 +84,21 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Sección Nuestro Equipo */}
       <section className="nuestro-equipo-container">
         <h2 className="nuestro-equipo-title">
           Nuestro equipo
         </h2>
         <CardsPersonal />
       </section>
+
+      {/* Botón para regresar al tope de la página */}
+      {showScroll && (
+        <div className="scroll-to-top" onClick={scrollToTop}>
+          <FaArrowUp className="arrow-up-icon" />
+        </div>
+      )}
     </div>
   );
 };

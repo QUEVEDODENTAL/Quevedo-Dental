@@ -1,11 +1,19 @@
 import '../styles/Login.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleReturn = () => {
+    navigate('/');
+  };
+
   return (
     <div className="login-container">
       <h1>Inicio de Sesión</h1>
 
       <form className="form-container">
+      <p>Inicio de Sesión</p>
         <div className="form-group">
           <input
             type="text"
@@ -24,8 +32,9 @@ const Login = () => {
             required
           />
         </div>
-        <hr className="login-divider" />
         <button type="submit" className="login-button">Iniciar Sesión</button>
+        <hr className="login-divider" />
+        <button type="button" className="return-button" onClick={handleReturn}>Regresar</button>
       </form>
     </div>
   );

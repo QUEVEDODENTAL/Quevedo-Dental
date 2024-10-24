@@ -45,7 +45,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Añadida la transición */
+    transition: background-color 0.3s ease;
   }
   
   .banner-button:hover {
@@ -124,4 +124,34 @@
     list-style-type: disc;
     margin-left: 20px;
   }
+
+  .scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #133c55;
+    color: white;
+    padding: 10px;
+    border-radius: 20%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    z-index: 100;
+  }
+
+  .scroll-to-top:hover{
+    background-color: #0f2a42;
+  }
+  
+  .arrow-up-icon {
+    font-size: 24px;
+  }
+  
+  .scroll-to-top:hover {
+    background-color: #0f2a42;
+  }
+  
   
