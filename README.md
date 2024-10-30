@@ -1,8 +1,250 @@
-# React + Vite
+# Manual de Instalación
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este documento proporciona una guía completa sobre cómo instalar, configurar, y gestionar el proyecto **Quevedo Dental**. Asegúrate de seguir todos los pasos para garantizar una instalación exitosa y un entorno funcional.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Índice
+1. [Prerrequisitos](#prerrequisitos)
+1. [Instalación de Node.js, npm y pnpm](#instalación-de-nodejs-npm-y-pnpm)
+1. [Instalación de MySQL Server](#instalación-de-mysql-server)
+1. [Clonación e instalación de dependencias](#clonación-e-instalación-de-dependencias)
+1. [Configuración de la Base de Datos](#configuración-de-la-base-de-datos)
+1. [Migracion de la base de datos](#migracion-de-la-base-de-datos)
+1. [Verificación y uso de la Base de Datos](#verificación-y-uso-de-la-base-de-datos)
+1. [Ejecutar el Proyecto](#ejecutar-el-proyecto)
+1. [Acceso desde otros equipos en la red local](#acceso-desde-otros-equipos-en-la-red-local)
+
+---
+
+# Prerrequisitos
+
+Antes de comenzar, asegúrate de tener instalados los siguientes programas y herramientas en tu máquina:
+
+1. **Node.js 20.13.0 o superior:** Plataforma de ejecución para código JavaScript y dependencias del proyecto.
+2. **npm 10.9.0 o superior:** Necesario para la gestión de paquetes y dependencias del proyecto.
+3. **pnpm 9.2.0 o superior:** Necesario para la gestión de paquetes y dependencias del proyecto.
+4. **MySQL:** Se necesita la versión más reciente de MySQL para gestionar la base de datos. Deberás crear una contraseña durante la instalación.
+
+Si no cuentas con alguna de estas herramientas, te mostraremos cómo instalarlas.
+
+---
+
+# Instalación de `Node.js, npm y pnpm`
+
+## Instalación en ubuntu
+
+Para instalar Node.js y npm, escribe en la línea de comandos:
+```
+sudo apt update && sudo apt install nodejs npm
+```
+
+Verifica que se hayan instalado correctamente con:
+
+```
+node -v
+npm -v
+```
+
+Para instalar pnpm, escribe:
+
+```
+sudo npm install -g pnpm
+```
+
+Verifica que pnpm se haya instalado correctamente ejecutando:
+
+```
+pnpm -v
+``` 
+
+## Instalación en Windows
+
+Para instalar Node.js y npm, puede descargarlo desde [la pagina oficial Node.js.](https://nodejs.org/en) Durante la instalación, asegúrate de seleccionar la opción para instalar npm, que viene incluido.
+
+Verificamos que se hayan instalado de manera correcta con los siguientes comandos en el simbolo de sistema o powershell:
+
+```
+node -v
+npm -v
+```
+
+Para instalar pnpm, escribe:
+
+```
+npm install -g pnpm
+```
+
+Verifica la instalación ejecutando:
+
+```
+pnpm -v
+``` 
+
+---
+
+
+# Instalación de MySQL Server
+
+## Instalación en Ubuntu
+
+Actualiza el sistema abriendo una terminal y ejecutando:
+
+```
+sudo apt update && sudo apt upgrade
+```
+
+Instala MySQL Server con:
+
+```
+sudo apt install mysql-server
+```
+
+Verifica la instalación ejecutando:
+
+```
+systemctl status mysql
+```
+
+## Configuración inicial 
+Accede a MySQL como root para establecer una contraseña ejecutando:
+
+```
+sudo mysql
+```
+
+Dentro de la consola de MySQL, establece la contraseña reemplazando `nueva_contraseña`:
+
+```
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'nueva_contraseña';
+```
+
+Sal de la consola MySQL con el comando `exit`
+
+Prueba el acceso con:
+
+```
+mysql -u root -p
+```
+
+Para crear un nuevo usuario:
+
+```
+CREATE USER 'nuevo_usuario'@'localhost' IDENTIFIED BY 'tu_contraseña';
+GRANT ALL PRIVILEGES ON *.* TO 'nuevo_usuario'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+```
+
+Sustituyendo `nuevo_usuario` por el nombre del usuario que estamos creadno y `tu_contraseña` por la contraseña para el usuario que estamos creando.
+
+## Instalación  en windows
+
+MySQL Workbench es una herramienta gráfica para la administración de bases de datos MySQL. Para instalarlo, sigue estos pasos:
+
+1. Descarga MySQL Workbench desde el siguiente enlace:  
+   [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
+
+2. Sigue las instrucciones de instalación. Durante el proceso, se te pedirá que configures una contraseña para el usuario `root`. Asegúrate de recordar esta contraseña, ya que será utilizada más adelante en la configuración del proyecto.
+
+## Configuracion inicial
+Abre el Símbolo del sistema o PowerShell y accede a MySQL con:
+
+```
+mysql -u root -p
+```
+
+Para crear un nuevo usuario, usa el comando proporcionado en la sección anterior, ajustando `nuevo_usuario` y `tu_contraseña`.
+
+---
+
+
+# Clonación e instalación de dependencias
+
+## 1. Clona este repositorio
+
+```
+git clone https://github.com/QUEVEDODENTAL/Quevedo-Dental.git
+```
+
+## 2. Accede al directorio del proyecto
+
+```
+cd Quevedo-Dental
+```
+
+## 3. Instala las dependencias del proyecto
+
+```
+pnpm install
+```
+
+---
+
+# Configuración de la Base de Datos
+
+Crea un archivo `.env` en el directorio raíz del proyecto con la configuración siguiente, reemplazando `usuario` y `contraseña` según corresponda:
+
+```
+DATABASE_URL="mysql://usuario:contraseña@localhost:3306/proyecto_salud?schema=public"
+```
+
+**Nota importantes:** Asegúrate de que MySQL esté escuchando en el puerto 3306.
+
+---
+
+# Migración de la Base de Datos
+
+Ejecuta las migraciones para crear la estructura de la base de datos:
+
+```
+npx prisma migrate dev --schema=./src/services/prisma/schema.prisma
+npx prisma migrate deploy --schema=./src/services/prisma/schema.prisma
+npx prisma generate --schema=./src/services/prisma/schema.prisma
+```
+
+---
+
+# Verificación y uso de la Base de Datos
+
+Para verificar las migraciones, utiliza Prisma Studio:
+
+```
+npx prisma studio --schema=./src/services/prisma/schema.prisma
+```
+
+Abre `http://localhost:5555` en tu navegador y revisa los datos.
+
+---
+
+# Ejecutar el Proyecto
+
+Para ejecutar el proyecto en tu entorno local, usa:
+
+```
+pnpm run dev
+```
+
+Esto iniciará un servidor de desarrollo, y en la consola se mostrará un enlace similar a `http://localhost:3000`. Abre este enlace en tu navegador para ver la aplicación funcionando.
+
+---
+
+# Acceso desde otros equipos en la red local
+
+Si deseas acceder al proyecto desde otro dispositivo conectado a la misma red, necesitarás la dirección IP de tu máquina local.
+
+1. Abre una terminal o PowerShell y ejecuta el siguiente comando:
+
+```
+ipconfig
+```
+
+2. Busca la sección "Dirección IPv4" y copia la dirección que se muestra (ejemplo: `192.168.1.100`).
+
+3. En el navegador del otro equipo, ingresa la dirección IP seguida del puerto `3000`, por ejemplo:
+
+```
+http://192.168.1.100:3000
+```
+
+---
+
+
