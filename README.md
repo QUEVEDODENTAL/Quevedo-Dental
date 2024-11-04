@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Manual de Instalación
 
 Este documento proporciona una guía completa sobre cómo instalar, configurar, y gestionar el proyecto **Quevedo Dental**. Asegúrate de seguir todos los pasos para garantizar una instalación exitosa y un entorno funcional.
