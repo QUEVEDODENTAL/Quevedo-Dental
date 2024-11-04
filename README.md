@@ -171,20 +171,39 @@ git clone https://github.com/QUEVEDODENTAL/Quevedo-Dental.git
 cd Quevedo-Dental
 ```
 
-## 3. Instala las dependencias del proyecto
+## 3. Accede a la carpeta backend del proyecto
+
+```
+cd backend
+```
+
+## 4. Instala las dependencias del proyecto
 
 ```
 pnpm install
 ```
 
+## 5. Regresa y accede a la carpeta fronted
+
+```
+cd ..
+cd frontend
+```
+
+## 6. Instala las dependencias del proyecto
+
+```
+pnpm install
+```
 ---
 
-# Configuración de la Base de Datos
+# Configuración de las variables de entorno
 
-Crea un archivo `.env` en el directorio raíz del proyecto con la configuración siguiente, reemplazando `usuario` y `contraseña` según corresponda:
+Crea un archivo `.env` en el directorio backend del proyecto con la configuración siguiente, reemplazando `usuario` y `contraseña` según corresponda:
 
 ```
 DATABASE_URL="mysql://usuario:contraseña@localhost:3306/proyecto_salud?schema=public"
+JWT_SECRET=mi_clave_secreta
 ```
 
 **Nota importantes:** Asegúrate de que MySQL esté escuchando en el puerto 3306.
@@ -193,22 +212,28 @@ DATABASE_URL="mysql://usuario:contraseña@localhost:3306/proyecto_salud?schema=p
 
 # Migración de la Base de Datos
 
+Ingresa al directorio backend
+
+```
+cd backend
+```
+
 Ejecuta las migraciones para crear la estructura de la base de datos:
 
 ```
-npx prisma migrate dev --schema=./src/services/prisma/schema.prisma
-npx prisma migrate deploy --schema=./src/services/prisma/schema.prisma
-npx prisma generate --schema=./src/services/prisma/schema.prisma
+npx prisma migrate dev 
+npx prisma migrate deploy
+npx prisma generate
 ```
 
 ---
 
 # Verificación y uso de la Base de Datos
 
-Para verificar las migraciones, utiliza Prisma Studio:
+Para verificar las migraciones, utiliza Prisma Studio dentro del directorio backend:
 
 ```
-npx prisma studio --schema=./src/services/prisma/schema.prisma
+npx prisma studio
 ```
 
 Abre `http://localhost:5555` en tu navegador y revisa los datos.
@@ -217,13 +242,22 @@ Abre `http://localhost:5555` en tu navegador y revisa los datos.
 
 # Ejecutar el Proyecto
 
-Para ejecutar el proyecto en tu entorno local, usa:
+Para ejecutar el proyecto en tu entorno local, ejecuta el backend ingresando al directorio y usando:
 
 ```
 pnpm run dev
 ```
 
-Esto iniciará un servidor de desarrollo, y en la consola se mostrará un enlace similar a `http://localhost:3000`. Abre este enlace en tu navegador para ver la aplicación funcionando.
+Esto iniciará un servidor de desarrollo.
+
+Ahora en el directorio frontend usa:
+
+```
+pnpm run dev
+```
+Esto iniciará un servidor con algo como http://localhost:3000/, al abrirlo mostrara nuestro frontend.
+
+**Nota importante:** Es importante ejecutar tanto el servidor de backend como el de frontend para que el sistema funcione correctamente. 
 
 ---
 
