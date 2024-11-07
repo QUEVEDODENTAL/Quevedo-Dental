@@ -8,12 +8,18 @@ const Login = () => {
     navigate('/');
   };
 
+  const handleLogin = (event) => {
+    event.preventDefault();
+    
+    navigate('/dashboard');
+  };
+
   return (
     <div className="login-container">
       <h1>Inicio de Sesión</h1>
 
-      <form className="form-container">
-      <p>Inicio de Sesión</p>
+      <form className="form-container" onSubmit={handleLogin}>
+        <p>Inicio de Sesión</p>
         <div className="form-group">
           <input
             type="text"
