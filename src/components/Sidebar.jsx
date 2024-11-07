@@ -7,11 +7,6 @@ import '../styles/Sidebar.css';
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-
-
-
-
-  
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -26,8 +21,6 @@ const Sidebar = () => {
     <div className="sidebar-container">
       <aside className={`sidebar-desktop ${isCollapsed ? 'collapsed' : ''}`}>
         <Logo />
-        
-        {/* Botón para alternar el estado del sidebar */}
         <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
           <FaBars />
         </button>
