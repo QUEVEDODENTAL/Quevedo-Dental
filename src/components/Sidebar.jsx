@@ -5,7 +5,13 @@ import { FaHome, FaUser, FaUserPlus, FaUserInjured, FaSignOutAlt, FaAddressBook,
 import '../styles/Sidebar.css';
 
 const Sidebar = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);  // Estado para alternar el sidebar
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+
+
+
+
+  
   const navigate = useNavigate();
 
   const handleLogout = () => {
