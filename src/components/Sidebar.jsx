@@ -30,7 +30,7 @@ const Sidebar = () => {
           <li><FaAddressCard /> <span className={isCollapsed ? 'hidden' : ''}>Pacientes</span></li>
           <li><FaUser /> <span className={isCollapsed ? 'hidden' : ''}>Perfil</span></li>
           <li><FaUserPlus /> <span className={isCollapsed ? 'hidden' : ''}>Registrar</span></li>
-          <li><FaAddressBook /> <span className={isCollapsed ? 'hidden' : ''}>Historial</span></li>
+          <li><FaAddressBook /> <span className={isCollapsed ? 'hidden' : ''}>Historial creo</span></li>
           <li><FaUserInjured /> <span className={isCollapsed ? 'hidden' : ''}>Servicios</span></li>
           <li onClick={handleLogout} className="logout"><FaSignOutAlt /> <span className={isCollapsed ? 'hidden' : ''}>Salir</span></li>
         </ul>
