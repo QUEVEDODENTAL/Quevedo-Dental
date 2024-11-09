@@ -6,7 +6,6 @@ import '../styles/Sidebar.css';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
-
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -26,13 +25,13 @@ const Sidebar = () => {
         </button>
 
         <ul className="menu">
-          <li><FaHome /> <span className={isCollapsed ? 'hidden' : ''}>Inicio</span></li>
-          <li><FaAddressCard /> <span className={isCollapsed ? 'hidden' : ''}>Pacientes</span></li>
-          <li><FaUser /> <span className={isCollapsed ? 'hidden' : ''}>Perfil</span></li>
-          <li><FaUserPlus /> <span className={isCollapsed ? 'hidden' : ''}>Registrar</span></li>
-          <li><FaAddressBook /> <span className={isCollapsed ? 'hidden' : ''}>Historial</span></li>
-          <li><FaUserInjured /> <span className={isCollapsed ? 'hidden' : ''}>Servicios</span></li>
-          <li onClick={handleLogout} className="logout"><FaSignOutAlt /> <span className={isCollapsed ? 'hidden' : ''}>Salir</span></li>
+          <li><FaHome className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Inicio</span></li>
+          <li><FaAddressCard className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Pacientes</span></li>
+          <li><FaUser className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Perfil</span></li>
+          <li><FaUserPlus className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Registrar</span></li>
+          <li><FaAddressBook className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Historial</span></li>
+          <li><FaUserInjured className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Servicios</span></li>
+          <li onClick={handleLogout} className="logout"><FaSignOutAlt className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Salir</span></li>
         </ul>
       </aside>
     </div>
