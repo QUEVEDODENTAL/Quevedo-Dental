@@ -9,10 +9,8 @@ const Home = () => {
   const [showScroll, setShowScroll] = useState(false);
 
   const handleLoginRedirect = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
     navigate('/login');
   };
-  
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -24,7 +22,7 @@ const Home = () => {
       const windowHeight = window.innerHeight; // Altura de la ventana
       const documentHeight = document.documentElement.scrollHeight; // Altura total del documento
 
-
+      // Comprobamos si estamos a menos de 20 píxeles del final
       if (documentHeight - windowHeight - scrollPosition <= 160) {
         setShowScroll(false);
       } else {
@@ -39,7 +37,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home-container" id='home'>
+    <div className="home-container">
 
       {/* Sección del Banner */}
       <div className="banner-container">
