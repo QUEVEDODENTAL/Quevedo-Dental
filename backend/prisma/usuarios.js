@@ -7,8 +7,8 @@ async function main() {
   // Datos de usuarios de prueba
   const users = [
     {
-      Email: 'admin@example.com',
-      Password: await bcrypt.hash('admin123', 10),
+      Email: 'andres@ite.edu.mx',
+      Password: await bcrypt.hash('1234', 10),
       IsAdministrator: true,
       IsDoctor: false,
       IsEmployee: false,
