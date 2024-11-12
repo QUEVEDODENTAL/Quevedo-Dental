@@ -9,26 +9,41 @@
   height: 100vh;
   color: white;
   transition: width 0.3s ease;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .sidebar-desktop.collapsed {
   width: 60px;
 }
 
-.toggle-sidebar-btn {
-  background: none;
-  border: none;
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  width: 40px;
+  height: 40px;
+  background-color: #133c55;
+  border-radius: 50%;
   color: white;
-  font-size: 24px;
-  position: absolute;
-  top: 20px;
-  left: 10px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.icon-circle:hover{
+  background-color: #0f2b3d;
 }
 
 .menu {
   list-style: none;
-  padding: 0;
+  padding-left: 0;
   margin-top: 20px;
 }
 
@@ -49,14 +64,9 @@
 }
 
 .menu li:hover {
-  background-color: #1a1568;
+  background-color: #0f2b3d;
 }
 
-.logout {
-  color: #ff4d4d;
-}
-
-/* Ocultar solo el texto cuando el sidebar está colapsado */
 .hidden {
   display: none;
 }
@@ -65,7 +75,11 @@
   justify-content: center;
 }
 
-/* Ajustes para los íconos cuando está colapsado */
 .sidebar-desktop.collapsed .menu li .icon {
   margin-right: 0;
+}
+
+.logo-line{
+  border-bottom: 1px solid #ffffff;
+  margin-bottom: 20px;
 }
