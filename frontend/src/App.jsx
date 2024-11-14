@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import Dashboard from './components/Dashboard';
+import Register from './components/Register';
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
-          }></Route>
+          } />
+          <Route path="/register" element={<Register />} />
+
         </Routes>
 
         <Footer />
