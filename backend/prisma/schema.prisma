@@ -72,6 +72,7 @@ model doctor {
   MedicalLicense String?        @db.VarChar(100)
   Email          String         @unique @db.VarChar(150)
   HireDate       DateTime       @db.Date
+  Password       String         @db.VarChar(100)
 }
 
 model empleado {
@@ -88,6 +89,8 @@ model empleado {
   RFC       String?
   Salary    Decimal?         @db.Decimal(10, 2)
   HireDate  DateTime?        @db.Date
+  Password  String           @db.VarChar(100)
+
 }
 
 model enfermedades {
