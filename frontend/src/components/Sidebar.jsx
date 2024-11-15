@@ -29,7 +29,7 @@ const Sidebar = () => {
           <li><FaUser className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Perfil</span></li>
           <li><FaUserPlus className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Registrar</span></li>
           <li><FaAddressBook className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Historial</span></li>
-          <li><FaUserInjured className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Servicios</span></li>
+          <li onClick={() => navigate('/servicios')}><FaUserInjured className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Servicios</span></li>
           <li onClick={handleLogout} className="logout"><FaSignOutAlt className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Salir</span></li>
           <div className="icon-circle" onClick={toggleSidebar}>
             <FaBars />
