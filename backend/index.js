@@ -25,6 +25,63 @@ app.use(cors({
 // Inicialización del cliente Prisma para interactuar con la base de datos
 const prismaClient = new prisma.PrismaClient();
 
+// Obtener todos los clientes (con información básica)
+app.get('/clientes', async (req, res) => {
+    try {
+        const clientes = await prismaClient.clientes.findMany({
+            select: {
+                id: true,
+                Name: true,
+                LastName: true,
+                SEX: true,
+                Phone: true,
+                Email: true,
+            },
+        });
+        res.status(200).json(clientes);
+    } catch (error) {
+        console.error('Error al obtener clientes:', error);
+        res.status(500).json({ error: 'Error al obtener la lista de clientes' });
+    }
+});
+
+// Obtener detalles de un cliente por ID
+app.get('/clientes/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const cliente = await prismaClient.clientes.findUnique({
+            where: { id: parseInt(id) },
+            select: {
+                id: true,
+                Name: true,
+                LastName: true,
+                SEX: true,
+                Age: true,
+                BirthDate: true,
+                Address: true,
+                Phone: true,
+                CURP: true,
+                Email: true,
+                BloodType: true,
+                Occupation: true,
+                Education: true,
+            },
+        });
+
+        if (!cliente) {
+            return res.status(404).json({ error: 'Cliente no encontrado' });
+        }
+
+        res.status(200).json(cliente);
+    } catch (error) {
+        console.error('Error al obtener detalles del cliente:', error);
+        res.status(500).json({ error: 'Error al obtener los detalles del cliente' });
+    }
+});
+
+
+
 // Registro de doctor con manejo de contraseña y transacción
 app.post('/register/doctor', async (req, res) => {
     const {
