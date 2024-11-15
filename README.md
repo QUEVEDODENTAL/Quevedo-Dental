@@ -11,6 +11,7 @@ Este documento proporciona una guía completa sobre cómo instalar, configurar, 
 1. [Configuración de las varialbes de entorno](#configuración-de-las-variables-de-entorno)
 1. [Migracion de la base de datos](#migración-de-la-base-de-datos)
 1. [Verificación y uso de la Base de Datos](#verificación-y-uso-de-la-base-de-datos)
+1. [Generar informacion de prueba](#generar-informacion-de-prueba)
 1. [Ejecutar el Proyecto](#ejecutar-el-proyecto)
 1. [Acceso desde otros equipos en la red local](#acceso-desde-otros-equipos-en-la-red-local)
 
@@ -240,6 +241,15 @@ Abre `http://localhost:5555` en tu navegador y revisa los datos.
 
 ---
 
+# Generar informacion de prueba 
+
+Para generar informacion de prueba en la base de datos, desde el directorio backend ejecuta:
+
+```
+pnpm run data
+```
+
+
 # Ejecutar el Proyecto
 
 Para ejecutar el proyecto en tu entorno local, ejecuta el backend ingresando al directorio y usando:
@@ -248,11 +258,7 @@ Para ejecutar el proyecto en tu entorno local, ejecuta el backend ingresando al 
 pnpm run dev
 ```
 
-Esto iniciará un servidor de desarrollo. Y para agregar algunos usuarios ejecuta
-
-```
-pnpm run usuarios
-```
+Esto iniciará un servidor de desarrollo. 
 
 Ahora en el directorio frontend usa:
 

@@ -4,9 +4,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "node --watch index.js",
-    "usuarios": "node prisma/usuarios.js",
-    "clientes": "node prisma/clientes.js",
-    "empleadoctor": "node prisma/empleadoctor.js",
+    "data": "node prisma/data.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "ISC",
