@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Login from './components/Login';
 import Footer from './components/Footer';
+import Servicios from './components/Servicios'; 
 import Dashboard from './components/Dashboard';
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
               <Dashboard />
             </ProtectedRoute>
           }></Route>
+
+          <Route path="/servicios" element={<Servicios />} />
         </Routes>
 
         <Footer />
@@ -29,3 +32,4 @@ function App() {
 }
 
 export default App;
+
