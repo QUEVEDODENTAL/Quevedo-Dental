@@ -7,6 +7,9 @@ import Login from './components/Login';
 import Footer from './components/Footer';
 import Dashboard from './components/Dashboard';
 import Register from './components/Register';
+import ClientList from './components/ClientList';
+import ClientDetails from './components/ClientDetails';
+
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
             </ProtectedRoute>
           } />
           <Route path="/register" element={<Register />} />
+
+          <Route path="/clientes" element={<ClientList />} />
+          <Route path="/clientes/:id" element={<ClientDetails />} />
 
         </Routes>
 
