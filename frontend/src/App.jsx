@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Footer from './components/Footer';
 import Servicios from './components/Servicios'; 
 import Dashboard from './components/Dashboard';
+import Historial from './components/Historial';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           }></Route>
 
           <Route path="/servicios" element={<Servicios />} />
+          <Route path="/historial" element={<Historial />} />
         </Routes>
 
         <Footer />
