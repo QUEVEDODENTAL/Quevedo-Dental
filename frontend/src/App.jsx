@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import Servicios from './components/Servicios'; 
 import Dashboard from './components/Dashboard';
 import Historial from './components/Historial';
+import Odontograma from './components/Odontograma';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
 
           <Route path="/servicios" element={<Servicios />} />
           <Route path="/historial" element={<Historial />} />
+          <Route path="odontograma" element={<Odontograma/>} />
         </Routes>
 
         <Footer />
