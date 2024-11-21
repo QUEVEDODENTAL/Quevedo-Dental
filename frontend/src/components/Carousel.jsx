@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'; // Importa los iconos
+import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
+
 import '../styles/Carousel.css';
 
 const Carousel = () => {
@@ -37,10 +38,10 @@ const Carousel = () => {
       </div>
 
       <button className="carousel-button prev" onClick={prevSlide}>
-        <FaArrowLeft size={30} /> {/* Icono de flecha hacia la izquierda */}
+        <AiFillCaretLeft size={30} /> {/* Icono de flecha hacia la izquierda */}
       </button>
       <button className="carousel-button next" onClick={nextSlide}>
-        <FaArrowRight size={30} /> {/* Icono de flecha hacia la derecha */}
+        <AiFillCaretRight size={30} /> {/* Icono de flecha hacia la derecha */}
       </button>
     </div>
   );
