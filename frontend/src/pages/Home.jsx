@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaAngleDoubleUp } from 'react-icons/fa';
 import '../styles/Home.css';
 import CardsPersonal from '../components/Cardspersonal';
+import Carousel from '../components/Carousel'
 
 const Home = () => {
   const navigate = useNavigate();
@@ -73,9 +74,7 @@ const Home = () => {
         <h2 className="nuestro-equipo-title">
           Servicios
         </h2>
-        <p>
-          Pendiente
-        </p>
+        <Carousel/>
       </section>
 
       {/* Sección Sobre Nosotros */}
