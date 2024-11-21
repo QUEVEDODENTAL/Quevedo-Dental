@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaAngleDoubleUp } from 'react-icons/fa';
 import '../styles/Home.css';
-import CardsPersonal from './Cardspersonal';
+import CardsPersonal from '../components/Cardspersonal';
 
 const Home = () => {
   const navigate = useNavigate();

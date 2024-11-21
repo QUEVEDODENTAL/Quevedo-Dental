@@ -1,10 +1,8 @@
-import Sidebar from './Sidebar';
 import '../styles/Dashboard.css';
 
 const Dashboard = () => {
   return (
     <div className="dashboard-container">
-      <Sidebar />
       <main className="main-content">
         <h1>Bienvenido al Dashboard del Dr. Quevedo</h1>
         <p className='eslogan'>

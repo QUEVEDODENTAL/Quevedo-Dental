@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Sidebar from './Sidebar';
 import '../styles/Perfil.css';
 
 const Perfil = () => {
@@ -21,7 +20,6 @@ const Perfil = () => {
 
   return (
     <div className="perfil-container">
-      <Sidebar />
       <div className="perfil-content">
         {/* Círculo con las iniciales */}
         <div className="perfil-photo-container">
