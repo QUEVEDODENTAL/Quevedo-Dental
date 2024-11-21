@@ -28,6 +28,9 @@ function App() {
 
           <Route path="/clientes" element={<ClientList />} />
           <Route path="/clientes/:id" element={<ClientDetails />} />
+          <Route path="/servicios" element={<Servicios />} />
+          <Route path="/historial" element={<Historial />} />
+          <Route path="odontograma" element={<Odontograma/>} />
 
         </Routes>
 
