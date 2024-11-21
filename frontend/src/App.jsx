@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 import Header from './components/Header';
@@ -9,9 +9,19 @@ import Dashboard from './components/Dashboard';
 import Register from './components/Register';
 import ClientList from './components/ClientList';
 import ClientDetails from './components/ClientDetails';
+import Perfil from './components/Perfil';
+import Servicios from './components/Servicios';
+import Historial from './components/Historial';
+import Odontograma from './components/Odontograma';
 
 
 function App() {
+
+  const location = useLocation();
+
+  // Verifica si la ruta actual es /dashboard o /perfil
+  const isDashboardPage = location.pathname === '/dashboard';
+  const isPerfilPage = location.pathname === '/perfil'; // Nueva condición para el perfil
   return (
     <AuthProvider>
       <div>
@@ -30,11 +40,13 @@ function App() {
           <Route path="/clientes/:id" element={<ClientDetails />} />
           <Route path="/servicios" element={<Servicios />} />
           <Route path="/historial" element={<Historial />} />
-          <Route path="odontograma" element={<Odontograma/>} />
+          <Route path="odontograma" element={<Odontograma />} />
 
+          <Route path="/perfil" element={<Perfil />} /> {/* Agrega la ruta para el perfil */}
         </Routes>
 
-        <Footer />
+        {/* Solo muestra el Footer si no estamos en /perfil */}
+        {!isPerfilPage && !isDashboardPage && <Footer />}
       </div>
     </AuthProvider>
   );
