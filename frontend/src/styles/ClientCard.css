@@ -6,7 +6,6 @@ body {
     padding: 0;
 }
 
-/* Contenedor principal para las tarjetas */
 .clientes-container {
     display: flex;
     flex-wrap: wrap;

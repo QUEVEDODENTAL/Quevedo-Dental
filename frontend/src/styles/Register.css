@@ -27,7 +27,6 @@
 .form-group {
     display: flex;
     flex-wrap: wrap;
-    /* Permite que los inputs se acomoden en varias filas cuando no hay suficiente espacio */
     gap: 1rem;
     margin-bottom: 15px;
     justify-content: space-between;
@@ -44,7 +43,6 @@ select {
     border-radius: 10px;
     font-size: 14px;
     width: 48%;
-    /* Se ajusta el ancho de cada input al 48% para que dos inputs quepan en una fila */
     box-sizing: border-box;
 }
 
@@ -53,7 +51,6 @@ input[type="number"],
 input[type="password"],
 select {
     width: 100%;
-    /* Algunos inputs pueden tomar todo el ancho */
 }
 
 .register-button {
@@ -68,7 +65,6 @@ select {
     transition: background-color 0.3s;
     margin-top: 10px;
     width: 100%;
-    /* El botón ocupa todo el ancho */
 }
 
 .register-button:hover {
@@ -85,6 +81,5 @@ select {
     input,
     select {
         width: 100%;
-        /* En pantallas pequeñas, los inputs ocupan todo el ancho */
     }
 }

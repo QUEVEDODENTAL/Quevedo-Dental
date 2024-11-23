@@ -30,13 +30,13 @@ const Sidebar = () => {
           <li onClick={() => navigateTo('/dashboard')}>
             <FaHome className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Inicio</span>
           </li>
-          <li onClick={() => navigateTo('/pacientes')}>
+          <li onClick={() => navigateTo('/clientes')}>
             <FaAddressCard className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Pacientes</span>
           </li>
           <li onClick={() => navigateTo('/perfil')}>
             <FaUser className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Perfil</span>
           </li>
-          <li onClick={() => navigateTo('/registrar')}>
+          <li onClick={() => navigateTo('/register')}>
             <FaUserPlus className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Registrar</span>
           </li>
           <li onClick={() => navigateTo('/historial')}>

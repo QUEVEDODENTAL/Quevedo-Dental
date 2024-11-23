@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import ClienteCard from './ClientCard';
+import { useEffect, useState } from 'react';
+import ClienteCard from '../components/ClientCard';
+import Sidebar from '../components/Sidebar';
+
 import '../styles/ClientList.css';
 
 
@@ -38,6 +40,7 @@ const ClientesList = () => {
 
     return (
         <div className="clientes-list-container">
+            <Sidebar/>
             <h1>Lista de Clientes</h1>
 
             {/* Input de búsqueda */}

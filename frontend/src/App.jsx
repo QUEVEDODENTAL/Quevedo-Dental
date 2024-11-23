@@ -2,30 +2,32 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 import Header from './components/Header';
-import Home from './components/Home';
-import Login from './components/Login';
+import Home from './pages/Home';
+import Login from './pages/Login';
 import Footer from './components/Footer';
-import Dashboard from './components/Dashboard';
-import Register from './components/Register';
-import ClientList from './components/ClientList';
+import Dashboard from './pages/Dashboard';
+import Register from './pages/Register';
+import ClientList from './pages/ClientList';
 import ClientDetails from './components/ClientDetails';
-import Perfil from './components/Perfil';
-import Servicios from './components/Servicios';
-import Historial from './components/Historial';
+import Perfil from './pages/Perfil';
+import Servicios from './pages/Servicios';
+import Historial from './pages/Historial';
 import Odontograma from './components/Odontograma';
-
 
 function App() {
 
   const location = useLocation();
 
-  // Verifica si la ruta actual es /dashboard o /perfil
-  const isDashboardPage = location.pathname === '/dashboard';
-  const isPerfilPage = location.pathname === '/perfil'; // Nueva condición para el perfil
+  // Verifica si la ruta actual es / o /login
+  const isHomePage = location.pathname === '/';
+  const isLoginPage = location.pathname === '/login';
+
   return (
     <AuthProvider>
       <div>
-        <Header />
+        {/* Solo muestra el Header en Home y Login */}
+        {(isHomePage || isLoginPage) && <Header />}
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -35,18 +37,16 @@ function App() {
             </ProtectedRoute>
           } />
           <Route path="/register" element={<Register />} />
-
           <Route path="/clientes" element={<ClientList />} />
           <Route path="/clientes/:id" element={<ClientDetails />} />
           <Route path="/servicios" element={<Servicios />} />
           <Route path="/historial" element={<Historial />} />
           <Route path="odontograma" element={<Odontograma />} />
-
-          <Route path="/perfil" element={<Perfil />} /> {/* Agrega la ruta para el perfil */}
+          <Route path="/perfil" element={<Perfil />} />
         </Routes>
 
-        {/* Solo muestra el Footer si no estamos en /perfil */}
-        {!isPerfilPage && !isDashboardPage && <Footer />}
+        {/* Solo muestra el Footer en Home y Login */}
+        {(isHomePage || isLoginPage) && <Footer />}
       </div>
     </AuthProvider>
   );

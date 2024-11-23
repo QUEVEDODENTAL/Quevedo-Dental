@@ -1,28 +1,7 @@
-/* Asegurarnos de que todo ocupe al menos el 100% de la altura de la pantalla */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: Arial, sans-serif;
-}
-
 /* Contenedor principal */
 .servicios-container {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  min-height: 300px;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-h2 {
-  text-align: center;
-  color: #333;
+  height: 100vh;
 }
 
 /* Lista de servicios */
