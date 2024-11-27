@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* Background y colores */
+=======
+>>>>>>> main
 :root {
   --background: #F7F7F7;
   --foreground: #1F2937;
@@ -13,10 +16,15 @@
 
 /* Estilos generales del contenedor */
 .historial-container {
+<<<<<<< HEAD
   background-color: var(--background);
   color: var(--foreground);
   min-height: 100vh;
   padding: 20px;
+=======
+  display: flex;
+  height: 100vh;
+>>>>>>> main
 }
 
 .historial-container h1 {

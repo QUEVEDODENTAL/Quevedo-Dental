@@ -8,9 +8,10 @@ Este documento proporciona una guía completa sobre cómo instalar, configurar, 
 1. [Instalación de Node.js, npm y pnpm](#instalación-de-nodejs-npm-y-pnpm)
 1. [Instalación de MySQL Server](#instalación-de-mysql-server)
 1. [Clonación e instalación de dependencias](#clonación-e-instalación-de-dependencias)
-1. [Configuración de la Base de Datos](#configuración-de-la-base-de-datos)
-1. [Migracion de la base de datos](#migracion-de-la-base-de-datos)
+1. [Configuración de las varialbes de entorno](#configuración-de-las-variables-de-entorno)
+1. [Migracion de la base de datos](#migración-de-la-base-de-datos)
 1. [Verificación y uso de la Base de Datos](#verificación-y-uso-de-la-base-de-datos)
+1. [Generar informacion de prueba](#generar-informacion-de-prueba)
 1. [Ejecutar el Proyecto](#ejecutar-el-proyecto)
 1. [Acceso desde otros equipos en la red local](#acceso-desde-otros-equipos-en-la-red-local)
 
@@ -202,7 +203,7 @@ pnpm install
 Crea un archivo `.env` en el directorio backend del proyecto con la configuración siguiente, reemplazando `usuario` y `contraseña` según corresponda:
 
 ```
-DATABASE_URL="mysql://usuario:contraseña@localhost:3306/proyecto_salud?schema=public"
+DATABASE_URL="mysql://usuario:contraseña@localhost:3306/nombre-proyecto?schema=public"
 JWT_SECRET=mi_clave_secreta
 ```
 
@@ -240,6 +241,15 @@ Abre `http://localhost:5555` en tu navegador y revisa los datos.
 
 ---
 
+# Generar informacion de prueba 
+
+Para generar informacion de prueba en la base de datos, desde el directorio backend ejecuta:
+
+```
+pnpm run data
+```
+
+
 # Ejecutar el Proyecto
 
 Para ejecutar el proyecto en tu entorno local, ejecuta el backend ingresando al directorio y usando:
@@ -248,14 +258,14 @@ Para ejecutar el proyecto en tu entorno local, ejecuta el backend ingresando al 
 pnpm run dev
 ```
 
-Esto iniciará un servidor de desarrollo.
+Esto iniciará un servidor de desarrollo. 
 
 Ahora en el directorio frontend usa:
 
 ```
 pnpm run dev
 ```
-Esto iniciará un servidor con algo como http://localhost:3000/, al abrirlo mostrara nuestro frontend.
+Esto iniciará un servidor con algo como http://localhost:3001/, al abrirlo mostrara nuestro frontend.
 
 **Nota importante:** Es importante ejecutar tanto el servidor de backend como el de frontend para que el sistema funcione correctamente. 
 

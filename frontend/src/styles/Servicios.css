@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Asegurarnos de que todo ocupe al menos el 100% de la altura de la pantalla */
 html, body {
   margin: 0;
@@ -23,6 +24,12 @@ html, body {
 h2 {
   text-align: center;
   color: #333;
+=======
+/* Contenedor principal */
+.servicios-container {
+  display: flex;
+  height: 100vh;
+>>>>>>> main
 }
 
 /* Lista de servicios */

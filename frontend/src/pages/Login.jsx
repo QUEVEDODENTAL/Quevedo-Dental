@@ -1,6 +1,6 @@
 import '../styles/Login.css';
 import { useNavigate } from 'react-router-dom';
-import React, { useState } from 'react'; // Importación de React y el hook useState para manejar estado local
+import { useState } from 'react'; // Importación de React y el hook useState para manejar estado local
 import { useAuth } from '../context/AuthContext'; // Hook personalizado para manejar el contexto de autenticación
 
 const Login = () => {
