@@ -1,121 +1,135 @@
 /* Contenedor principal */
 .perfil-container {
-  display: flex;
-  height: 100%;
-  background-color: #e9e9e9;
+    display: flex;
+    height: 100%;
+    background-color: #e9e9e9;
 }
 
 /* Contenido del perfil */
 .perfil-content {
-  flex: 1;
-  padding: 20px;
-  margin: 1%;
-  background-color: #f0f8ff; /* Azul claro */
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    flex: 1;
+    padding: 20px;
+    margin: 1%;
+    background-color: #f0f8ff;
+    /* Azul claro */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* Portada con fondo azul */
 .perfil-photo-container {
-  height: 20vh;
-  background-color: #133c55;
-  border-radius: 10px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding-left: 20px; /* Espaciado para el círculo */
+    height: 20vh;
+    background-color: #133c55;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20px;
+    /* Espaciado para el círculo */
 }
 
 /* Círculo con iniciales */
 .circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: #ff69b4; /* Rosado */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ff69b4;
+    /* Rosado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .initials {
-  font-size: 30px;
-  color: white;
-  font-weight: bold;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
 }
 
 /* Información del perfil */
 .perfil-info {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Tres columnas */
-  gap: 20px;
-  margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Tres columnas */
+    gap: 20px;
+    margin-top: 20px;
 }
 
 /* Caja de información */
 .info-box {
-  background-color: #ffffff; /* Fondo blanco */
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
-  padding: 10px;
-  position: relative; /* Necesario para la línea de separación */
-  display: flex;
-  flex-direction: column;
+    background-color: #ffffff;
+    /* Fondo blanco */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra */
+    padding: 10px;
+    position: relative;
+    /* Necesario para la línea de separación */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Línea de separación entre la información de cada caja */
 .info-box p {
-  font-size: 14px; /* Texto más pequeño */
-  color: #333;
-  margin: 5px 0;
-  border-bottom: 1px solid #ddd; /* Línea debajo de cada párrafo */
+    font-size: 14px;
+    /* Texto más pequeño */
+    color: #333;
+    margin: 5px 0;
+    border-bottom: 1px solid #ddd;
+    /* Línea debajo de cada párrafo */
 }
 
 .info-box strong {
-  color: #555;
+    color: #555;
 }
 
 /* Agregar una línea en la parte inferior de cada caja de información */
 .info-box::after {
-  content: ''; /* El pseudo-elemento no necesita texto */
-  position: absolute;
-  bottom: 0; /* Lo coloca al final de la caja */
-  left: 0;
-  width: 100%;
-  border-bottom: 2px solid #74bcff; /* Línea de separación azul */
+    content: '';
+    /* El pseudo-elemento no necesita texto */
+    position: absolute;
+    bottom: 0;
+    /* Lo coloca al final de la caja */
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid #74bcff;
+    /* Línea de separación azul */
 }
 
 /* Campos de texto editables más pequeños */
 .editable-input {
-  width: 100%;
-  padding: 5px;
-  font-size: 18px; /* Texto más pequeño */
-  border: 3px solid #ddd;
-  border-radius: 5px;
-  background-color: #fff;
-  margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+    font-size: 18px;
+    /* Texto más pequeño */
+    border: 3px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 10px;
 }
 
 .editable-input:focus {
-  outline: none;
-  border-color: #74bcff;
-  box-shadow: 0 0 5px rgba(116, 188, 255, 0.6);
+    outline: none;
+    border-color: #74bcff;
+    box-shadow: 0 0 5px rgba(116, 188, 255, 0.6);
 }
 
 /* Botón de alternancia (Editar/Guardar) */
 .toggle-button {
-  padding: 8px 15px;
-  font-size: 14px; /* Texto más pequeño */
-  color: #fff;
-  background-color: #74bcff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    padding: 8px 15px;
+    font-size: 14px;
+    /* Texto más pequeño */
+    color: #fff;
+    background-color: #74bcff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .toggle-button:hover {
-  background-color: #5a9edc;
+    background-color: #5a9edc;
 }

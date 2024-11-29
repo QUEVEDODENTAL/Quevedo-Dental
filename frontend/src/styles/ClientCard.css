@@ -1,0 +1,57 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f9fafc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.clientes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Estilo para cada tarjeta de cliente */
+.cliente-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 280px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    text-align: center;
+}
+
+.cliente-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Información dentro de la tarjeta */
+.cliente-card h3 {
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+}
+
+.cliente-card p {
+    margin: 0.25rem 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+    .clientes-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cliente-card {
+        width: 90%;
+    }
+}

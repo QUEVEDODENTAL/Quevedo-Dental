@@ -1,0 +1,118 @@
+/* Contenedor principal */
+.servicios-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Lista de servicios */
+.servicios-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.servicio-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+
+.servicio-card .servicio-nombre {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #007bff;
+}
+
+.servicio-card .servicio-precio {
+  font-size: 1.1em;
+  color: #333;
+}
+
+/* Estilo de los botones (Editar y Eliminar) */
+.acciones {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.acciones button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 48%;
+}
+
+.btn-editar {
+  background-color: #ffc107;
+  color: white;
+}
+
+.btn-editar:hover {
+  background-color: #e0a800;
+}
+
+.btn-eliminar {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-eliminar:hover {
+  background-color: #c82333;
+}
+
+/* Estilos del formulario (Añadir/Editar servicio) */
+.formulario-servicios {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formulario-servicios input {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.formulario-servicios button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.formulario-servicios button:hover {
+  background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
