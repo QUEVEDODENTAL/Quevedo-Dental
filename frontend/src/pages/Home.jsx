@@ -68,13 +68,10 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Sección Servicios (pendiente) */}
-      <section className="nuestro-equipo-container" id='servicios'>
-        <h2 className="nuestro-equipo-title">
+      <h2 className="nuestro-equipo-title">
           Servicios
-        </h2>
-        <Carousel/>
-      </section>
+        </h2>  
+        <p>PENDIENTE</p>
 
       {/* Sección Sobre Nosotros */}
       <section className="sobre-nosotros-container" id='sobre-nosotros'>
