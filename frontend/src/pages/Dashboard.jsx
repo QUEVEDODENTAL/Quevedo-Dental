@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import Sidebar from '../components/Sidebar';
->>>>>>> main
 import '../styles/Dashboard.css';
 
 const Dashboard = () => {

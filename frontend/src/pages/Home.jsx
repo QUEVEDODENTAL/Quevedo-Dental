@@ -3,10 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { FaAngleDoubleUp } from 'react-icons/fa';
 import '../styles/Home.css';
 import CardsPersonal from '../components/Cardspersonal';
-<<<<<<< HEAD
-import Carousel from '../components/Carousel'
-=======
->>>>>>> main
 
 const Home = () => {
   const navigate = useNavigate();
