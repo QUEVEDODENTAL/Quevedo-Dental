@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "app.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "node --watch index.js",
     "data": "node prisma/data.js",
