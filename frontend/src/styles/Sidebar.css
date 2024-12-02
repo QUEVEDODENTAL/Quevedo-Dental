@@ -1,18 +1,24 @@
+/* Contenedor principal del Sidebar */
 .sidebar-container {
-  position: relative;
+  position:relative;  /* Sidebar no está fijo, pero se posiciona relativo a su contenedor */
+  top: 0;               /* Pegado a la parte superior */
+  left: 0;              /* Pegado a la izquierda */
+  height: 100vh;        /* Ocupa toda la altura de la ventana */
+  z-index: 1;           /* Asegura que el sidebar esté encima del contenido */
 }
 
+/* Estilos del Sidebar */
 .sidebar-desktop {
   width: 200px;
   background-color: #133c55;
   padding: 20px;
-  height: 100vh;
+  height: 100vh;    /* Asegura que el sidebar ocupe toda la altura */
   color: white;
   transition: width 0.3s ease;
 }
 
 .sidebar-desktop.collapsed {
-  width: 60px;
+  width: 60px;  /* Si se colapsa, reducimos el ancho */
 }
 
 .sidebar-header {
@@ -75,6 +81,10 @@
 
 .sidebar-desktop.collapsed .menu li .icon {
   margin-right: 0;
+}
+
+.Logo{
+  text-align: center;
 }
 
 .logo-line {
