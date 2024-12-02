@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "dev": "node --watch index.js",
-    "data": "node prisma/data.js",
+    "data": "node scripts/data.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "ISC",
