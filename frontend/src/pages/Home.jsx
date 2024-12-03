@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { FaAngleDoubleUp } from 'react-icons/fa';
 import '../styles/Home.css';
 import CardsPersonal from '../components/Cardspersonal';
+<<<<<<< HEAD
+=======
+import Carousel from '../components/Carousel';
+>>>>>>> Frontend
 
 const Home = () => {
   const navigate = useNavigate();
@@ -12,7 +16,6 @@ const Home = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     navigate('/login');
   };
-  
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -23,7 +26,6 @@ const Home = () => {
       const scrollPosition = window.pageYOffset;
       const windowHeight = window.innerHeight; // Altura de la ventana
       const documentHeight = document.documentElement.scrollHeight; // Altura total del documento
-
 
       if (documentHeight - windowHeight - scrollPosition <= 160) {
         setShowScroll(false);
@@ -39,8 +41,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home-container" id='home'>
-
+    <div className="home-container" id="home">
       {/* Sección del Banner */}
       <div className="banner-container">
         <div className="banner-content">
@@ -61,50 +62,50 @@ const Home = () => {
             </button>
           </div>
           <div className="banner-placeholder">
-            <h1>
-              Imagen del doctor 1
-            </h1>
+            <h1>Imagen del doctor 1</h1>
           </div>
         </div>
       </div>
 
+<<<<<<< HEAD
       <h2 className="nuestro-equipo-title">
           Servicios
         </h2>  
         <p>PENDIENTE</p>
+=======
+      {/* Sección Servicios */}
+      <section className="nuestro-equipo-container" id="servicios">
+        <h2 className="nuestro-equipo-title">Servicios</h2>
+        <Carousel />
+      </section>
+>>>>>>> Frontend
 
       {/* Sección Sobre Nosotros */}
-      <section className="sobre-nosotros-container" id='sobre-nosotros'>
+      <section className="sobre-nosotros-container" id="sobre-nosotros">
         <div className="sobre-nosotros-content">
           <div className="sobre-nosotros-text">
             <h2>Sobre Nosotros</h2>
             <p>
-            Somos expertos en estrategia, diseño y desarrollo dental. 
-              Innovadores y solucionadores de problemas. Suficientemente 
-              flexibles para adaptarnos a sus necesidades, pero lo suficientemente 
+              Somos expertos en estrategia, diseño y desarrollo dental.
+              Innovadores y solucionadores de problemas. Suficientemente
+              flexibles para adaptarnos a sus necesidades, pero lo suficientemente
               sólidos como para ofrecer el más alto nivel de atención.
             </p>
           </div>
           <div className="sobre-nosotros-images">
             <div className="image-placeholder">
-              <h2>
-                imagen 1
-              </h2>
+              <h2>imagen 1</h2>
             </div>
             <div className="image-placeholder">
-              <h2>
-                imagen 2
-              </h2>
+              <h2>imagen 2</h2>
             </div>
           </div>
         </div>
       </section>
 
       {/* Sección Nuestro Equipo */}
-      <section className="nuestro-equipo-container" id='nuestro-equipo'>
-        <h2 className="nuestro-equipo-title">
-          Nuestro equipo
-        </h2>
+      <section className="nuestro-equipo-container" id="nuestro-equipo">
+        <h2 className="nuestro-equipo-title">Nuestro equipo</h2>
         <CardsPersonal />
       </section>
 

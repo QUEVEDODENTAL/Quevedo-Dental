@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Sidebar from "../components/Sidebar"; // Importación del Sidebar
 import AntecedentesPatologicos from "../components/Antecedentespatologicos";
 import AntecedentesNoPatologicos from "../components/Antecedentesnopatologicos";
 import Enfermedades from "../components/Enfermedades";
@@ -27,7 +26,6 @@ const Historial = () => {
 
   return (
     <div className="historial-container">
-      <Sidebar /> {/* Inclusión del Sidebar */}
       <div className="main-content"> {/* Contenedor principal del contenido */}
         <h1>Historial Clínico</h1>
         <div className="bg-card">
