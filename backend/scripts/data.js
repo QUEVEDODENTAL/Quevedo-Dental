@@ -1,23 +1,7 @@
-import { PrismaClient } from '@prisma/client';
+const { PrismaClient } = require('@prisma/client');
+const bcrypt = require('bcryptjs');
 const prisma = new PrismaClient();
-import bcrypt from 'bcryptjs';
 
-
-// Generar contraseñas encriptadas
-const password = await bcrypt.hash('securepassword123', 10);
-
-// Datos de administrador  
-const users = [
-    {
-        Email: 'admin@admin.com',
-        Password: await bcrypt.hash('admin123', 10),
-        IsAdministrator: true,
-        IsDoctor: false,
-        IsEmployee: false,
-    },
-];
-
-// Datos de clientes
 const clientesData = [
     {
         Name: 'Juan',
@@ -31,7 +15,7 @@ const clientesData = [
         Email: 'juan.perez@example.com',
         BloodType: 'O+',
         Occupation: 'Ingeniero',
-        Education: 'Licenciatura'
+        Education: 'Licenciatura',
     },
     {
         Name: 'María',
@@ -45,25 +29,10 @@ const clientesData = [
         Email: 'maria.garcia@example.com',
         BloodType: 'A+',
         Occupation: 'Doctora',
-        Education: 'Maestría'
-    },
-    {
-        Name: 'Carlos',
-        LastName: 'López',
-        SEX: 'Masculino',
-        Age: 40,
-        BirthDate: new Date('1984-11-08'),
-        Address: 'Calle Segunda, Guadalajara',
-        Phone: '3321237890',
-        CURP: 'LOPC841108HDFRTN03',
-        Email: 'carlos.lopez@example.com',
-        BloodType: 'B+',
-        Occupation: 'Contador',
-        Education: 'Licenciatura'
+        Education: 'Maestría',
     },
 ];
 
-// Datos de doctores
 const doctorsData = [
     {
         Name: 'Carlos',
@@ -76,11 +45,9 @@ const doctorsData = [
         Cellphone: '5551234567',
         CURP: 'GOMC780615HMCLNR03',
         LicenseNumber: 'LIC-12345',
-        Sex: 'Masculino',
         MedicalLicense: 'MED-45678',
         Email: 'carlos.gomez@clinic.com',
         HireDate: new Date('2015-01-10'),
-        Password: password,
     },
     {
         Name: 'María',
@@ -93,15 +60,12 @@ const doctorsData = [
         Cellphone: '5557654321',
         CURP: 'FERM840320MMCLNR09',
         LicenseNumber: 'LIC-67890',
-        Sex: 'Femenino',
         MedicalLicense: 'MED-78901',
         Email: 'maria.fernandez@clinic.com',
         HireDate: new Date('2018-05-15'),
-        Password: password,
     },
 ];
 
-// Datos de empleados
 const employeesData = [
     {
         Name: 'Juan',
@@ -116,7 +80,6 @@ const employeesData = [
         RFC: 'LOPJ9007123R0',
         Salary: 15000.0,
         HireDate: new Date('2020-08-01'),
-        Password: password,
     },
     {
         Name: 'Ana',
@@ -131,60 +94,70 @@ const employeesData = [
         RFC: 'MARA8812033R0',
         Salary: 18000.0,
         HireDate: new Date('2019-03-20'),
-        Password: password,
     },
 ];
 
-
-
 async function main() {
-    console.log('Cargando datos ficticios en la tabla clientes...');
+    console.log('Cargando datos ficticios...');
+
+    // Generar contraseña
+    const password = await bcrypt.hash('password123', 10);
+
+    // Insertar usuario administrador
+    await prisma.usuarios.create({
+        data: {
+            Email: 'admin@admin.com',
+            Password: password,
+            IsAdministrator: true,
+            IsDoctor: false,
+            IsEmployee: false,
+        },
+    });
 
     // Insertar datos de clientes
     for (const cliente of clientesData) {
         await prisma.clientes.create({
-            data: cliente
+            data: cliente,
         });
     }
 
-    // Insertar usuarios (como administrador)
-    for (const user of users) {
-        await prisma.usuarios.create({
-            data: user,
-        });
-    }
-
-    // Insertar doctores y crear sus usuarios
+    // Insertar datos de doctores
     for (const doctor of doctorsData) {
+
         const createdDoctor = await prisma.doctor.create({
-            data: doctor
+            data: {
+                ...doctor,
+                Password: password,
+            },
         });
 
-        // Crear un usuario para el doctor
         await prisma.usuarios.create({
             data: {
                 Email: createdDoctor.Email,
-                Password: createdDoctor.Password,
+                Password: password,
                 IsDoctor: true,
-                IsEmployee: false,  // Asegurarse de que sea un doctor, no un empleado
-            }
+                IsEmployee: false,
+            },
         });
     }
 
-    // Insertar empleados y crear sus usuarios
+    // Insertar datos de empleados
     for (const employee of employeesData) {
+
         const createdEmployee = await prisma.empleado.create({
-            data: employee
+            data: {
+                ...employee,
+                Password: password,
+            },
         });
 
-        // Crear un usuario para el empleado
         await prisma.usuarios.create({
             data: {
                 Email: createdEmployee.Email,
-                Password: createdEmployee.Password,
-                IsDoctor: false,  // Asegurarse de que sea un empleado, no un doctor
+                Password: password,
+                IsDoctor: false,
                 IsEmployee: true,
-            }
+            },
         });
     }
 
