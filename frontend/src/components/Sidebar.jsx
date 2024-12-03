@@ -26,6 +26,7 @@ const Sidebar = () => {
         <ul className="menu">
           <div className='logo-line'>
             <Logo />
+            <div className={`Logo ${isCollapsed ? 'hidden' : ''}`}>Quevedo Dental</div> {/* Añadir la clase 'hidden' aquí */}
           </div>
 <<<<<<< HEAD
           <li><FaHome className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Inicio</span></li>
