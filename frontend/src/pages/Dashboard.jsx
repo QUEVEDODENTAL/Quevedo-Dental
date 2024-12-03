@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import Sidebar from '../components/Sidebar';
-=======
->>>>>>> Frontend
 import '../styles/Dashboard.css';
 
 const Dashboard = () => {
