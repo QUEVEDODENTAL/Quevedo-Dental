@@ -31,7 +31,7 @@ const Register = () => {
     // Función para manejar el submit del formulario
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const url = userType === 'doctor' ? 'http://localhost:3000/register/doctor' : 'http://localhost:3000/register/employee';
+        const url = userType === 'doctor' ? 'http://localhost:3000/doctores/register' : 'http://localhost:3000/empleados/register';
 
         const formDataWithUserType = { ...formData, userType };
 

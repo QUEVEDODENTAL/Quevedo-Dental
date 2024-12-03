@@ -3,10 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaAngleDoubleUp } from 'react-icons/fa';
 import '../styles/Home.css';
 import CardsPersonal from '../components/Cardspersonal';
-<<<<<<< HEAD
 import Carousel from '../components/Carousel'
-=======
->>>>>>> main
 
 const Home = () => {
   const navigate = useNavigate();
@@ -16,7 +13,7 @@ const Home = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     navigate('/login');
   };
-  
+
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -77,7 +74,7 @@ const Home = () => {
         <h2 className="nuestro-equipo-title">
           Servicios
         </h2>
-        <Carousel/>
+        {/* <Carousel /> */}
       </section>
 
       {/* Sección Sobre Nosotros */}
@@ -86,9 +83,9 @@ const Home = () => {
           <div className="sobre-nosotros-text">
             <h2>Sobre Nosotros</h2>
             <p>
-            Somos expertos en estrategia, diseño y desarrollo dental. 
-              Innovadores y solucionadores de problemas. Suficientemente 
-              flexibles para adaptarnos a sus necesidades, pero lo suficientemente 
+              Somos expertos en estrategia, diseño y desarrollo dental.
+              Innovadores y solucionadores de problemas. Suficientemente
+              flexibles para adaptarnos a sus necesidades, pero lo suficientemente
               sólidos como para ofrecer el más alto nivel de atención.
             </p>
           </div>

@@ -1,12 +1,7 @@
 import '../styles/Login.css';
 import { useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-=======
-import { useState } from 'react'; // Importación de React y el hook useState para manejar estado local
-import { useAuth } from '../context/AuthContext'; // Hook personalizado para manejar el contexto de autenticación
->>>>>>> main
 
 const Login = () => {
   const { setAuth } = useAuth(); // Hook para actualizar el estado de autenticación global
@@ -26,7 +21,7 @@ const Login = () => {
 
     try {
       // Realiza una solicitud POST al backend para autenticar al usuario
-      const response = await fetch('http://localhost:3000/login', {
+      const response = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // Especifica que los datos enviados son JSON

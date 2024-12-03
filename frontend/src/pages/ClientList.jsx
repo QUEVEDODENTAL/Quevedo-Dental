@@ -40,7 +40,7 @@ const ClientesList = () => {
 
     return (
         <div className="clientes-list-container">
-            <Sidebar/>
+            <Sidebar />
             <h1>Lista de Clientes</h1>
 
             {/* Input de búsqueda */}
