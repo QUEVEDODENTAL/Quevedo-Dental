@@ -14,6 +14,9 @@ import ClientDetails from './components/ClientDetails';
 import Servicios from './pages/Servicios';
 import Historial from './pages/Historial';
 import Odontograma from './components/Odontograma';
+import AdminDashboard from './pages/AdminDashboard';
+import DoctorDashboard from './pages/DoctorDashboard';
+import EmployeeDashboard from './pages/EmployeeDashboard';
 
 function App() {
   const location = useLocation();
@@ -25,24 +28,21 @@ function App() {
   return (
     <AuthProvider>
       <div style={{ display: 'flex' }}>
-        {/* Muestra el Sidebar excepto en Home y Login */}
-        {!isHomePage && !isLoginPage && <Sidebar />}
-        
+
+
         <div style={{ flex: 1 }}>
-          {/* Solo muestra el Header y Footer si estamos en Home o Login */}
-          {(isHomePage || isLoginPage) && <Header />}
-          
+
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
-            <Route 
-              path="/dashboard" 
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              } 
-            />
+
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
+            <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
+
+
+
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/register" element={<Register />} />
             <Route path="/clientes" element={<ClientList />} />
@@ -51,9 +51,7 @@ function App() {
             <Route path="/historial" element={<Historial />} />
             <Route path="/odontograma" element={<Odontograma />} />
           </Routes>
-          
-          {/* Solo muestra el Footer si estamos en Home o Login */}
-          {(isHomePage || isLoginPage) && <Footer />}
+
         </div>
       </div>
     </AuthProvider>
