@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import ClienteCard from '../components/ClientCard';
+import ClienteCard from './ClientCard';
 
-import '../styles/ClientList.css';
+import './ClientList.css';
 
 
 const ClientesList = () => {

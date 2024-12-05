@@ -1,18 +1,17 @@
 import { Routes, Route } from 'react-router-dom';  // Quitar BrowserRouter (Router)
 import { AuthProvider } from './context/AuthContext';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Perfil from './pages/Perfil';
-import Register from './pages/Register';
-import ClientList from './pages/ClientList';
-import ClientDetails from './components/ClientDetails';
-import Servicios from './pages/Servicios';
-import Historial from './pages/Historial';
-import Odontograma from './components/Odontograma';
-import AdminDashboard from './pages/AdminDashboard';
-import DoctorDashboard from './pages/DoctorDashboard';
-import EmployeeDashboard from './pages/EmployeeDashboard';
+import Perfil from './components/Dashboard/Perfil';
+import Register from './components/register/Register';
+import ClientList from './components/client/ClientList';
+import Servicios from './components/Dashboard/Servicios';
+import Historial from './components/Dashboard/Historial/Historial';
 import PrivateRoute from './components/ProtectedRoute';
+import AdminPage from './pages/AdminPage';
+import Dashboard from './components/Dashboard/Dashboard';
+import DoctorPage from './pages/DoctorPage';
+import EmployeePage from './pages/EmployeePage';
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
@@ -21,30 +20,43 @@ function App() {
         <div style={{ flex: 1 }}>
           <Routes>
             {/* Rutas públicas */}
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<LoginPage />} />
 
             {/* Rutas protegidas */}
-            <Route path="/admin/dashboard" element={
-              <PrivateRoute element={<AdminDashboard />} role="admin" />
-            } />
-            <Route path="/doctor/dashboard" element={
-              <PrivateRoute element={<DoctorDashboard />} role="doctor" />
-            } />
-            <Route path="/employee/dashboard" element={
-              <PrivateRoute element={<EmployeeDashboard />} role="employee" />
-            } />
+            <Route
+              path="/admin/*"
+              element={<PrivateRoute element={<AdminPage />} role="admin" />}
+            >
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="paciente" element={<ClientList />} />
+              <Route path="perfil" element={<Perfil />} />
+              <Route path="register" element={<Register />} />
+              <Route path="historial" element={<Historial />} />
+              <Route path="servicios" element={<Servicios />} />
+            </Route>
+
+            <Route
+              path="/doctor/*"
+              element={<PrivateRoute element={<DoctorPage />} role="doctor" />}
+            >
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="paciente" element={<ClientList />} />
+              <Route path="perfil" element={<Perfil />} />
+              <Route path="historial" element={<Historial />} />
+              <Route path="servicios" element={<Servicios />} />
+            </Route>
+
+            <Route
+              path="/employee/*"
+              element={<PrivateRoute element={<EmployeePage />} role="employee" />}
+            >
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="perfil" element={<Perfil />} />
+              <Route path="servicios" element={<Servicios />} />
+            </Route>
 
 
-
-            {/* Otras rutas */}
-            <Route path="/perfil" element={<Perfil />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/clientes" element={<ClientList />} />
-            <Route path="/clientes/:id" element={<ClientDetails />} />
-            <Route path="/servicios" element={<Servicios />} />
-            <Route path="/historial" element={<Historial />} />
-            <Route path="/odontograma" element={<Odontograma />} />
           </Routes>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 
-import '../styles/Carousel.css';
+import './Carousel.css';
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

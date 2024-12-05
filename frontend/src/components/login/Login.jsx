@@ -1,7 +1,7 @@
-import '../styles/Login.css';
+import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 const Login = () => {
   const { setAuth } = useAuth(); // Manejo del estado de autenticación global
@@ -42,7 +42,7 @@ const Login = () => {
         case 'doctor':
           navigate('/doctor/dashboard');
           break;
-        case 'empleado':
+        case 'employee':
           navigate('/employee/dashboard');
           break;
         default:

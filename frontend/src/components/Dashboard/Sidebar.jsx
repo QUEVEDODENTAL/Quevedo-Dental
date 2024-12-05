@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import Logo from './Logo';
+import { useAuth } from '../../context/AuthContext';
+import Logo from '../landing/Logo';
 import {
   FaHome, FaUser, FaUserPlus, FaUserInjured,
   FaSignOutAlt, FaAddressBook, FaAddressCard, FaBars
 } from "react-icons/fa";
-import '../styles/Sidebar.css';
+import './Sidebar.css';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -55,43 +55,77 @@ const Sidebar = () => {
               Quevedo Dental
             </div>
           </div>
-          <li onClick={() => navigateTo('/dashboard')}>
-            <FaHome className="icon" />
-            <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Inicio</span>
-          </li>
+
 
           {/* Menú dinámico basado en roles */}
           {auth.role === 'admin' && (
             <>
-              <li onClick={() => navigateTo('/register')}>
+              <li onClick={() => navigateTo('/admin/dashboard')}>
+                <FaHome className="icon" />
+                <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Inicio</span>
+              </li>
+              <li onClick={() => navigateTo('/admin/paciente')}>
+                <FaAddressCard className="icon" />
+                <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Pacientes</span>
+              </li>
+              <li onClick={() => navigateTo('/admin/perfil')}>
+                <FaUser className="icon" />
+                <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Perfil</span>
+              </li>
+              <li onClick={() => navigateTo('/admin/register')}>
                 <FaUserPlus className="icon" />
                 <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Registrar</span>
               </li>
-              <li onClick={() => navigateTo('/historial')}>
+              <li onClick={() => navigateTo('/admin/historial')}>
                 <FaAddressBook className="icon" />
                 <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Historial</span>
               </li>
+              <li onClick={() => navigateTo('/admin/servicios')}>
+                <FaUserInjured className="icon" />
+                <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Servicios</span>
+              </li>
+
             </>
           )}
 
           {auth.role === 'doctor' && (
             <>
-              <li onClick={() => navigateTo('/clientes')}>
+              <li onClick={() => navigateTo('/doctor/dashboard')}>
+                <FaHome className="icon" />
+                <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Inicio</span>
+              </li>
+              <li onClick={() => navigateTo('/doctor/paciente')}>
                 <FaAddressCard className="icon" />
                 <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Pacientes</span>
               </li>
-              <li onClick={() => navigateTo('/servicios')}>
+              <li onClick={() => navigateTo('/doctor/perfil')}>
+                <FaUser className="icon" />
+                <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Perfil</span>
+              </li>
+              <li onClick={() => navigateTo('/doctor/historial')}>
+                <FaAddressBook className="icon" />
+                <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Historial</span>
+              </li>
+              <li onClick={() => navigateTo('/doctor/servicios')}>
                 <FaUserInjured className="icon" />
                 <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Servicios</span>
               </li>
             </>
           )}
 
-          {auth.role === 'empleado' && (
+          {auth.role === 'employee' && (
             <>
-              <li onClick={() => navigateTo('/perfil')}>
+              <li onClick={() => navigateTo('/employee/dashboard')}>
+                <FaHome className="icon" />
+                <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Inicio</span>
+              </li>
+              <li onClick={() => navigateTo('/employee/perfil')}>
                 <FaUser className="icon" />
                 <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Perfil</span>
+              </li>
+              <li onClick={() => navigateTo('/employee/servicios')}>
+                <FaUserInjured className="icon" />
+                <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Servicios</span>
               </li>
             </>
           )}

@@ -1,4 +1,4 @@
-import '../styles/CardsPersonal.css';
+import './CardsPersonal.css';
 
 const CardsPersonal = () => {
   return (

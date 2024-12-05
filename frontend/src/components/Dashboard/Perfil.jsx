@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/Perfil.css';
+import './Perfil.css';
 
 const Perfil = () => {
   const [dentista, setDentista] = useState({

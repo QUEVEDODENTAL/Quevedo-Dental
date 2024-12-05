@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/ClientCard.css';
+import './ClientCard.css';
 
 
 const ClienteCard = ({ cliente }) => {

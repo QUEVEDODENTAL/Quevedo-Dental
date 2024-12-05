@@ -1,6 +1,6 @@
 const express = require('express');
-const authenticateToken = require('../middleware/authMiddleware');
-const authorizeRole = require('../middleware/roleMiddleware');
+const authenticateToken = require('../middlewares/authenticate');
+const authorizeRole = require('../middlewares/roleMiddleware');
 const router = express.Router();
 
 // Rutas protegidas por autenticación y rol

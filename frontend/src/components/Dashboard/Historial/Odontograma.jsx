@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/Odontograma.css";
+import "./Odontograma.css";
 
 const dientes = [
   { number: 18, src: "/assets/dientes/dentadura-sup-18.svg" },

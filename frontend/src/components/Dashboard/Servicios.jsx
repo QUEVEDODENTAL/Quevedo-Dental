@@ -1,8 +1,7 @@
 import { useState } from "react";
-import FormularioServicios from "../components/FormularioServicios";
-import ListaServicios from "../components/ListaServicios";
-import "../styles/Servicios.css";
-import Sidebar from "../components/Sidebar"; 
+import FormularioServicios from "./FormularioServicios";
+import ListaServicios from "./ListaServicios";
+import "./Servicios.css";
 
 const Servicios = () => {
   const [servicios, setServicios] = useState([]);
@@ -48,7 +47,6 @@ const Servicios = () => {
 
   return (
     <div className="servicios-container">
-      <Sidebar/>
       <h2>Servicios</h2>
       <FormularioServicios
         nuevoServicio={nuevoServicio}

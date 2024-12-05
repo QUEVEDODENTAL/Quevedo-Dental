@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaAngleDoubleUp } from 'react-icons/fa';
-import '../styles/Home.css';
-import CardsPersonal from '../components/Cardspersonal';
-import Carousel from '../components/Carousel';
+import './Home.css'
+import CardsPersonal from './Cardspersonal';
+import Carousel from './Carousel';
 
 const Home = () => {
   const navigate = useNavigate();

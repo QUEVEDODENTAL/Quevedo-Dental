@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import AntecedentesPatologicos from "../components/Antecedentespatologicos";
-import AntecedentesNoPatologicos from "../components/Antecedentesnopatologicos";
-import Enfermedades from "../components/Enfermedades";
-import ExamenClinicoIntraoral from "../components/Examenclinicointraoral";
-import '../styles/Historial.css';
+import AntecedentesPatologicos from "./Antecedentespatologicos";
+import AntecedentesNoPatologicos from "./Antecedentesnopatologicos";
+import Enfermedades from "./Enfermedades";
+import ExamenClinicoIntraoral from "./Examenclinicointraoral";
+import './Historial.css';
 
 const Historial = () => {
   const [pacienteId, setPacienteId] = useState("");

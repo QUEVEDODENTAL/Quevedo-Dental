@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import '../styles/ClientDetail.css';
+import './ClientDetail.css';
 
 
 const ClienteDetails = () => {
