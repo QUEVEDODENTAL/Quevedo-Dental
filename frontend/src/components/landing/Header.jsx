@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
-const Header = () => {
+const HeaderD = () => {
   const navigate = useNavigate();
 
   const scrollToSection = (sectionId) => {
@@ -41,4 +41,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderD;

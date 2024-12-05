@@ -75,11 +75,10 @@ const Register = () => {
         }
     };
 
-
     return (
         <div className="register-container">
-            <h2>Registro de {userType === "doctor" ? "Doctor" : "Empleado"}</h2>
-            <div className="form-container">
+            <h1>Registro de {userType === "doctor" ? "Doctor" : "Empleado"}</h1>
+            <div className="form-container-register">
                 <div className="user-type-selector">
                     <label>
                         <input

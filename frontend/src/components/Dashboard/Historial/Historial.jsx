@@ -44,7 +44,6 @@ const Historial = () => {
           )}
         </div>
 
-        {/* Secciones del historial */}
         <div className="bg-card">
           <AntecedentesPatologicos pacienteId={pacienteId} />
         </div>
