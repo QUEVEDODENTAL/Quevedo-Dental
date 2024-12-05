@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Contexto de autenticación
+// Contexto de autenticaci√≥
 const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext);

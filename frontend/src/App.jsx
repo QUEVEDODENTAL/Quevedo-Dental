@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';  // Quitar BrowserRouter (Router)
+import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Perfil from './components/Dashboard/Perfil';
 import Register from './components/register/Register';
