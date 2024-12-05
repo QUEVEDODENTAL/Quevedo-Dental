@@ -75,6 +75,8 @@ model doctor {
   HireDate          DateTime       @db.Date
   Password          String         @db.VarChar(100)
   image_data_doctor Bytes?
+  usuarioId         Int            @unique // Relación uno a uno con usuarios
+  usuario           usuarios       @relation(fields: [usuarioId], references: [Id]) // Relación con usuarios
 }
 
 model empleado {
@@ -93,6 +95,8 @@ model empleado {
   HireDate           DateTime?        @db.Date
   Password           String           @db.VarChar(100)
   image_data_emleado Bytes?
+  usuarioId          Int              @unique // Relación uno a uno con usuarios
+  usuario            usuarios         @relation(fields: [usuarioId], references: [Id]) // Relación con usuarios
 }
 
 model enfermedades {
@@ -136,12 +140,14 @@ model permisos {
 }
 
 model usuarios {
-  Id              Int     @id @default(autoincrement())
-  Email           String  @unique @db.VarChar(100)
-  Password        String  @db.VarChar(100)
-  IsAdministrator Boolean @default(false)
-  IsDoctor        Boolean @default(false)
-  IsEmployee      Boolean @default(false)
+  Id              Int       @id @default(autoincrement())
+  Email           String    @unique
+  Password        String
+  IsAdministrator Boolean   @default(false)
+  IsDoctor        Boolean   @default(false)
+  IsEmployee      Boolean   @default(false)
+  doctor          doctor?
+  empleado        empleado?
 }
 
 model servicios {
