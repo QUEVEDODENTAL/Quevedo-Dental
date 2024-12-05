@@ -3,12 +3,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 0rem;
     background-color: #f0f2f5;
     font-family: "Poppins", sans-serif;
+    height: 100vh; /* Altura del viewport */
+    overflow: hidden; /* Evitar scroll en el contenedor principal */
 }
 
-.form-container {
+.form-container-register {
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
@@ -16,7 +18,10 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 800px;
+    max-height: 90vh; /* Altura máxima del formulario */
+    overflow-y: auto; /* Habilitar scroll vertical */
 }
+
 
 .user-type-selector {
     display: flex;

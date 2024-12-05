@@ -1,10 +1,9 @@
 /* Contenedor principal del Sidebar */
 .sidebar-container {
-  position:relative;  /* Sidebar no está fijo, pero se posiciona relativo a su contenedor */
-  top: 0;               /* Pegado a la parte superior */
-  left: 0;              /* Pegado a la izquierda */
-  height: 100vh;        /* Ocupa toda la altura de la ventana */
-  z-index: 1;           /* Asegura que el sidebar esté encima del contenido */
+  position:sticky;
+  top: 0;               
+  left: 0;              
+  height: 100%;        
 }
 
 /* Estilos del Sidebar */
@@ -12,7 +11,7 @@
   width: 200px;
   background-color: #133c55;
   padding: 20px;
-  height: 100vh;    /* Asegura que el sidebar ocupe toda la altura */
+  height: 100vh;
   color: white;
   transition: width 0.3s ease;
 }
