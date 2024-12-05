@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // Importar useNavigate
+import { useParams, useNavigate } from 'react-router-dom';
+import { useAuth } from '@/context/AuthContext';
 import './ClientDetail.css';
 
 const ClienteDetails = () => {
     const { id } = useParams();
-    const navigate = useNavigate(); // Inicializar useNavigate
+    const navigate = useNavigate();
+    const { auth } = useAuth(); // Obtén la información del rol del usuario
     const [cliente, setCliente] = useState(null);
 
     useEffect(() => {
@@ -18,6 +20,13 @@ const ClienteDetails = () => {
     }, [id]);
 
     if (!cliente) return <p>Cargando...</p>;
+
+    // Define la ruta base en función del rol
+    const baseRoute = auth.role === 'admin'
+        ? '/admin/paciente'
+        : auth.role === 'doctor'
+            ? '/doctor/paciente'
+            : '/'; // Default para empleados, si aplica
 
     return (
         <div className="cliente-details-container">
@@ -38,7 +47,7 @@ const ClienteDetails = () => {
             <div className="button-group">
                 <button onClick={() => alert('Servicios')}>Servicios</button>
                 <button onClick={() => alert('Carrito')}>Carrito</button>
-                <button onClick={() => navigate('/clientes')}>Regresar</button> {/* Redirección */}
+                <button onClick={() => navigate(baseRoute)}>Regresar</button> {/* Regresar dinámico */}
             </div>
         </div>
     );

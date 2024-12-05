@@ -7,7 +7,7 @@ const ClienteCard = ({ cliente }) => {
     const navigate = useNavigate();
 
     const handleCardClick = () => {
-        navigate(`/clientes/${cliente.id}`);
+        navigate(`/admin/paciente/${cliente.id}`);
     };
 
     return (
