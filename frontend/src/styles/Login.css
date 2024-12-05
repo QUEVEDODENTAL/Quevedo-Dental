@@ -21,7 +21,6 @@
     align-items: center;
 }
 
-
 .form-group {
     margin-bottom: 15px;
     width: 100%;
@@ -29,7 +28,7 @@
     justify-content: center;
 }
 
-input {
+.login-input {
     width: 100%;
     padding: 15px;
     border: 1px solid #ccc;
@@ -38,16 +37,15 @@ input {
     transition: border-color 0.3s;
 }
 
-input:focus {
+.login-input:focus {
     border-color: #133c55;
     outline: none;
 }
 
-input::placeholder {
+.login-input::placeholder {
     color: #999;
     opacity: 1;
 }
-
 
 .login-button {
     background-color: #133c55;

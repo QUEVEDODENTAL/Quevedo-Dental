@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../styles/AntecedentesNoPatologicos.css'
 
 const AntecedentesNoPatologicos = ({ pacienteId }) => {
   const [antecedentesNoPatologicos, setAntecedentesNoPatologicos] = useState({
@@ -75,6 +76,15 @@ const AntecedentesNoPatologicos = ({ pacienteId }) => {
           />
           Sedentarismo
         </label>
+        <label>
+          <input
+            type="checkbox"
+            name="exercise"
+            checked={antecedentesNoPatologicos.exercise}
+            onChange={handleChange}
+          />
+          Realiza ejercicio
+        </label>
       </div>
       <div>
         <label>Cirugías:</label>
@@ -85,15 +95,6 @@ const AntecedentesNoPatologicos = ({ pacienteId }) => {
         ></textarea>
       </div>
       <div>
-        <label>
-          <input
-            type="checkbox"
-            name="exercise"
-            checked={antecedentesNoPatologicos.exercise}
-            onChange={handleChange}
-          />
-          Realiza ejercicio
-        </label>
       </div>
       <button type="submit">Guardar</button>
     </form>

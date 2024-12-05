@@ -47,7 +47,7 @@ const Servicios = () => {
 
   return (
     <div className="servicios-container">
-      <h2>Servicios</h2>
+      <h1>Servicios</h1>
       <FormularioServicios
         nuevoServicio={nuevoServicio}
         handleChange={handleChange}

@@ -22,13 +22,28 @@ function App() {
   const isHomePage = location.pathname === '/';
   const isLoginPage = location.pathname === '/login';
 
+  // Páginas donde queremos eliminar el scroll
+  const noScrollPages = ['/dashboard', '/perfil', '/register', '/clientes', '/servicios', '/historial'];
+
+  // Comprobar si la página actual está en la lista de páginas sin scroll
+  const isNoScrollPage = noScrollPages.includes(location.pathname);
+
   return (
     <AuthProvider>
-      <div style={{ display: 'flex' }}>
+      <div 
+        style={{
+          display: 'flex',
+          overflow: isHomePage || isLoginPage ? 'auto' : 'hidden', // Aquí habilitamos o deshabilitamos el scroll
+          height: '100vh' // Esto asegura que la altura ocupe toda la pantalla
+        }}
+      >
         {/* Muestra el Sidebar excepto en Home y Login */}
         {!isHomePage && !isLoginPage && <Sidebar />}
         
-        <div style={{ flex: 1 }}>
+        <div 
+          style={{ flex: 1 }} 
+          className={isNoScrollPage ? 'no-scroll' : ''} // Aplica la clase 'no-scroll' en las páginas seleccionadas
+        >
           {/* Solo muestra el Header y Footer si estamos en Home o Login */}
           {(isHomePage || isLoginPage) && <Header />}
           

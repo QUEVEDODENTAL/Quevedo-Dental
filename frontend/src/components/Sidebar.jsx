@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from './Logo';
-import { FaHome, FaUser, FaUserPlus, FaUserInjured, FaSignOutAlt, FaAddressBook, FaAddressCard, FaBars } from "react-icons/fa";
+import { FaHome, FaUser, FaUserPlus, FaUserInjured, FaSignOutAlt, FaAddressBook, FaAddressCard, FaBars} from "react-icons/fa";
 import '../styles/Sidebar.css';
 
 const Sidebar = () => {
@@ -26,7 +26,7 @@ const Sidebar = () => {
         <ul className="menu">
           <div className='logo-line'>
             <Logo />
-            <div className={`Logo ${isCollapsed ? 'hidden' : ''}`}>Quevedo Dental</div> {/* Añadir la clase 'hidden' aquí */}
+            <div className={`Logo ${isCollapsed ? 'hidden' : ''}`}>Quevedo Dental</div>
           </div>
           <li onClick={() => navigateTo('/dashboard')}>
             <FaHome className="icon" /> <span className={`text ${isCollapsed ? 'hidden' : ''}`}>Inicio</span>

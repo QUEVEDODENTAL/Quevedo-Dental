@@ -41,10 +41,11 @@ const Login = () => {
       <h1>Inicio de Sesión</h1>
       <form className="form-container" onSubmit={handleLogin}>
         <p>Por favor, ingresa tus datos:</p>
-        {error && <p className="error-message">{error}</p>} {/* Mensaje de error si existe */}
+        {error && <p className="error-message">{error}</p>}
         <div className="form-group">
           <input
             type="email"
+            className="login-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Correo electrónico"
@@ -54,6 +55,7 @@ const Login = () => {
         <div className="form-group">
           <input
             type="password"
+            className="login-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Contraseña"

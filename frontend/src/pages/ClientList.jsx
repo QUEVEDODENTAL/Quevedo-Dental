@@ -39,7 +39,7 @@ const ClientesList = () => {
 
     return (
         <div className="clientes-list-container">
-            <h1>Lista de Clientes</h1>
+            <h1 className='title-clients'>Lista de Clientes</h1>
 
             {/* Input de búsqueda */}
             <div className="search-container">

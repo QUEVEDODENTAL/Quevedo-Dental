@@ -3,7 +3,7 @@
   position:sticky;
   top: 0;               
   left: 0;              
-  height: 100vh;        
+  height: 100%;        
 }
 
 /* Estilos del Sidebar */
@@ -11,7 +11,7 @@
   width: 200px;
   background-color: #133c55;
   padding: 20px;
-  height: 100vh;    /* Asegura que el sidebar ocupe toda la altura */
+  height: 100vh;
   color: white;
   transition: width 0.3s ease;
 }

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; // Importar useNavigate
 import '../styles/ClientDetail.css';
-
 
 const ClienteDetails = () => {
     const { id } = useParams();
+    const navigate = useNavigate(); // Inicializar useNavigate
     const [cliente, setCliente] = useState(null);
 
     useEffect(() => {
@@ -32,6 +32,14 @@ const ClienteDetails = () => {
             <p>Tipo de Sangre: {cliente.BloodType}</p>
             <p>Ocupación: {cliente.Occupation}</p>
             <p>Educación: {cliente.Education}</p>
+
+            <div className="divider"></div> {/* Línea divisora */}
+
+            <div className="button-group">
+                <button onClick={() => alert('Servicios')}>Servicios</button>
+                <button onClick={() => alert('Carrito')}>Carrito</button>
+                <button onClick={() => navigate('/clientes')}>Regresar</button> {/* Redirección */}
+            </div>
         </div>
     );
 };
