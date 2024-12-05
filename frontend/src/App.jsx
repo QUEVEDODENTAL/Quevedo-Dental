@@ -1,12 +1,7 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import ProtectedRoute from './components/ProtectedRoute';
+import { Routes, Route } from 'react-router-dom';  // Quitar BrowserRouter (Router)
 import { AuthProvider } from './context/AuthContext';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
 import Perfil from './pages/Perfil';
 import Register from './pages/Register';
 import ClientList from './pages/ClientList';
@@ -17,32 +12,32 @@ import Odontograma from './components/Odontograma';
 import AdminDashboard from './pages/AdminDashboard';
 import DoctorDashboard from './pages/DoctorDashboard';
 import EmployeeDashboard from './pages/EmployeeDashboard';
+import PrivateRoute from './components/ProtectedRoute';
 
 function App() {
-  const location = useLocation();
-
-  // Condiciones para mostrar Header y Footer solo en Home y Login
-  const isHomePage = location.pathname === '/';
-  const isLoginPage = location.pathname === '/login';
-
   return (
     <AuthProvider>
       <div style={{ display: 'flex' }}>
-
-
         <div style={{ flex: 1 }}>
-
-
           <Routes>
+            {/* Rutas públicas */}
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
 
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
-            <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
+            {/* Rutas protegidas */}
+            <Route path="/admin/dashboard" element={
+              <PrivateRoute element={<AdminDashboard />} role="admin" />
+            } />
+            <Route path="/doctor/dashboard" element={
+              <PrivateRoute element={<DoctorDashboard />} role="doctor" />
+            } />
+            <Route path="/employee/dashboard" element={
+              <PrivateRoute element={<EmployeeDashboard />} role="employee" />
+            } />
 
 
 
+            {/* Otras rutas */}
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/register" element={<Register />} />
             <Route path="/clientes" element={<ClientList />} />
@@ -51,7 +46,6 @@ function App() {
             <Route path="/historial" element={<Historial />} />
             <Route path="/odontograma" element={<Odontograma />} />
           </Routes>
-
         </div>
       </div>
     </AuthProvider>
