@@ -8,7 +8,6 @@ const router = express.Router();
 
 
 router.get('/profile', authenticateToken, async (req, res) => {
-    console.log('Ruta /perfil/profile alcanzada');
     try {
         const { id, role } = req.user;
 
@@ -16,10 +15,6 @@ router.get('/profile', authenticateToken, async (req, res) => {
         if (!id) {
             return res.status(400).json({ message: 'ID de usuario no encontrado' });
         }
-
-
-        console.log('User:', req.user);
-
 
         const user = await prismaClient.usuarios.findUnique({
             where: { Id: id },

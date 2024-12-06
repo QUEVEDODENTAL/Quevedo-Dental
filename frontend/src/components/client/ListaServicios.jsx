@@ -30,7 +30,7 @@ const ListaServicios = ({ servicios, onServicioEditado, onServicioEliminado, onA
             if (response.ok) {
                 // Llamar a la función para recargar los servicios después de la edición
                 onServicioEditado();
-                setEditingService(null);  // Reseteamos el servicio que está siendo editado
+                setEditingService(null); // Reseteamos el servicio que está siendo editado
             } else {
                 console.error('Error al editar el servicio:', response.statusText);
             }
@@ -39,48 +39,50 @@ const ListaServicios = ({ servicios, onServicioEditado, onServicioEliminado, onA
         }
     };
 
-
     const handleCancelEdit = () => {
         setEditingService(null);
     };
 
-
     return (
         <div className="servicios-container">
             <h2>Servicios Disponibles</h2>
-            <div className="service-cards">
-                {servicios.map((servicio) => (
-                    <div key={servicio.Id} className="service-card">
-                        {editingService === servicio.Id ? (
-                            // Formulario de edición
-                            <form onSubmit={handleEditSubmit} className="edit-form">
-                                <input
-                                    type="number"
-                                    name="Price"
-                                    value={editFormData.Price}
-                                    onChange={handleEditChange}
-                                    required
-                                    placeholder="Nuevo Precio"
-                                />
-                                <button type="submit">Guardar</button>
-                                <button type="button" onClick={handleCancelEdit}>
-                                    Cancelar
-                                </button>
-                            </form>
-                        ) : (
-                            // Vista normal del servicio
-                            <div className="service-info">
-                                <h3>{servicio.Service_Name}</h3>
-                                <p>Precio: ${isNaN(servicio.Price) ? 'N/A' : parseFloat(servicio.Price).toFixed(2)}</p>
-                                <div className="service-actions">
-                                    <button onClick={() => handleEditClick(servicio)}>Editar Precio</button>
-                                    <button onClick={() => onAgregarAlCarrito(servicio)}>Agregar al Carrito</button>
+            {servicios.length === 0 ? (
+                <p>No hay servicios disponibles</p>
+            ) : (
+                <div className="service-cards">
+                    {servicios.map((servicio) => (
+                        <div key={servicio.Id} className="service-card">
+                            {editingService === servicio.Id ? (
+                                // Formulario de edición
+                                <form onSubmit={handleEditSubmit} className="edit-form">
+                                    <input
+                                        type="number"
+                                        name="Price"
+                                        value={editFormData.Price}
+                                        onChange={handleEditChange}
+                                        required
+                                        placeholder="Nuevo Precio"
+                                    />
+                                    <button type="submit">Guardar</button>
+                                    <button type="button" onClick={handleCancelEdit}>
+                                        Cancelar
+                                    </button>
+                                </form>
+                            ) : (
+                                // Vista normal del servicio
+                                <div className="service-info">
+                                    <h3>{servicio.Service_Name}</h3>
+                                    <p>Precio: ${isNaN(servicio.Price) ? 'N/A' : parseFloat(servicio.Price).toFixed(2)}</p>
+                                    <div className="service-actions">
+                                        <button onClick={() => handleEditClick(servicio)}>Editar Precio</button>
+                                        <button onClick={() => onAgregarAlCarrito(servicio)}>Agregar al Carrito</button>
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };
