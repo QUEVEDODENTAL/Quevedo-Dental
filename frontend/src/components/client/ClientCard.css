@@ -1,10 +1,10 @@
-body {
+/* body {
     font-family: "Poppins", sans-serif;
     background-color: #f9fafc;
     color: #333;
     margin: 0;
     padding: 0;
-}
+} */
 
 .clientes-container {
     display: flex;
