@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import './AntecedentesNoPatologicos.css'
+import './AntecedentesPatologicos.css';
 
-const AntecedentesNoPatologicos = ({ pacienteId }) => {
-  const [antecedentesNoPatologicos, setAntecedentesNoPatologicos] = useState({
+const AntecedentesPatologicos = ({ pacienteId }) => {
+  const [antecedentesPatologicos, setAntecedentesPatologicos] = useState({
     smoking: false,
     substanceAbuse: false,
     alcoholism: false,
@@ -13,8 +13,8 @@ const AntecedentesNoPatologicos = ({ pacienteId }) => {
 
   const handleChange = (e) => {
     const { name, type, checked, value } = e.target;
-    setAntecedentesNoPatologicos({
-      ...antecedentesNoPatologicos,
+    setAntecedentesPatologicos({
+      ...antecedentesPatologicos,
       [name]: type === "checkbox" ? checked : value,
     });
   };
@@ -23,7 +23,7 @@ const AntecedentesNoPatologicos = ({ pacienteId }) => {
     e.preventDefault();
     console.log(
       "Datos enviados:",
-      antecedentesNoPatologicos,
+      antecedentesPatologicos,
       "Paciente ID:",
       pacienteId
     );
@@ -31,14 +31,14 @@ const AntecedentesNoPatologicos = ({ pacienteId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="antecedentes-no-patologicos">
-      <h2>Antecedentes No Patológicos</h2>
+    <form onSubmit={handleSubmit} className="antecedentes-patologicos">
+      <h2>Antecedentes Patológicos</h2>
       <div>
         <label>
           <input
             type="checkbox"
             name="smoking"
-            checked={antecedentesNoPatologicos.smoking}
+            checked={antecedentesPatologicos.smoking}
             onChange={handleChange}
           />
           Fuma
@@ -49,7 +49,7 @@ const AntecedentesNoPatologicos = ({ pacienteId }) => {
           <input
             type="checkbox"
             name="substanceAbuse"
-            checked={antecedentesNoPatologicos.substanceAbuse}
+            checked={antecedentesPatologicos.substanceAbuse}
             onChange={handleChange}
           />
           Abuso de sustancias
@@ -60,7 +60,7 @@ const AntecedentesNoPatologicos = ({ pacienteId }) => {
           <input
             type="checkbox"
             name="alcoholism"
-            checked={antecedentesNoPatologicos.alcoholism}
+            checked={antecedentesPatologicos.alcoholism}
             onChange={handleChange}
           />
           Alcoholismo
@@ -71,7 +71,7 @@ const AntecedentesNoPatologicos = ({ pacienteId }) => {
           <input
             type="checkbox"
             name="sedentary"
-            checked={antecedentesNoPatologicos.sedentary}
+            checked={antecedentesPatologicos.sedentary}
             onChange={handleChange}
           />
           Sedentarismo
@@ -80,7 +80,7 @@ const AntecedentesNoPatologicos = ({ pacienteId }) => {
           <input
             type="checkbox"
             name="exercise"
-            checked={antecedentesNoPatologicos.exercise}
+            checked={antecedentesPatologicos.exercise}
             onChange={handleChange}
           />
           Realiza ejercicio
@@ -90,7 +90,7 @@ const AntecedentesNoPatologicos = ({ pacienteId }) => {
         <label>Cirugías:</label>
         <textarea
           name="surgeries"
-          value={antecedentesNoPatologicos.surgeries}
+          value={antecedentesPatologicos.surgeries}
           onChange={handleChange}
         ></textarea>
       </div>
@@ -101,4 +101,4 @@ const AntecedentesNoPatologicos = ({ pacienteId }) => {
   );
 };
 
-export default AntecedentesNoPatologicos;
+export default AntecedentesPatologicos;

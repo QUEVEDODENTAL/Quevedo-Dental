@@ -13,7 +13,7 @@ const Enfermedades = ({ pacienteNombre }) => {
   };
 
   return (
-    <div className="form-section">
+    <div className="form-section-enfermedades">
       <h2>Enfermedades</h2>
       <label htmlFor="enfermedad">Enfermedad:</label>
       <input
