@@ -1,6 +1,4 @@
 :root {
-  --background: #F7F7F7;
-  --foreground: #1F2937;
   --card: #FFFFFF;
   --card-foreground: #1F2937;
   --border: #D1D5DB;
@@ -23,6 +21,7 @@
 }
 
 /* Estilos para las tarjetas */
+
 .bg-card {
   background-color: var(--card);
   padding: 1.5rem;

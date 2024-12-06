@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Examenclinicointraoral.css'
 
 const ExamenClinicoIntraoral = ({ pacienteId }) => {
   const [examen, setExamen] = useState({

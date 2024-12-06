@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Enfermedades.css'
 
 const Enfermedades = ({ pacienteNombre }) => {
   const [enfermedad, setEnfermedad] = useState("");
