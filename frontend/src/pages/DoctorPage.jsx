@@ -9,7 +9,7 @@ const DoctorPage = () => {
             <Sidebar />
 
             {/* Contenido dinámico */}
-            <div style={{ flex: 1, padding: '1rem', backgroundColor: '#f5f5f5' }}>
+            <div style={{ flex: 1, padding: '1rem',}}>
                 <Outlet />
             </div>
         </div>
