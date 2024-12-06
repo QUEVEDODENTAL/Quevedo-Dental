@@ -93,21 +93,21 @@ router.get('/profile', authenticateToken, async (req, res) => {
 
 router.put(
     '/update',
-    authenticateToken, // Verifica que el usuario esté autenticado
+    authenticateToken,
     async (req, res) => {
 
         try {
-            const { userId } = req.user; // Asumiendo que el userId está en req.user
+            const { id } = req.user;
             const { Name, LastName, Specialty, Cellphone, Email, Address, BirthDate, Gender, HireDate, Position } = req.body; // Extrae los datos del cuerpo de la solicitud
 
             // Verificar si el userId existe
-            if (!userId) {
+            if (!id) {
                 return res.status(400).json({ message: 'ID de usuario no encontrado' });
             }
 
             // Verificar si el usuario es un doctor
             const user = await prismaClient.usuarios.findUnique({
-                where: { Id: userId },
+                where: { Id: id },
                 select: {
                     IsDoctor: true,
                     IsEmployee: true,
@@ -124,7 +124,7 @@ router.put(
             // Actualizar los datos según el tipo de usuario
             if (user.IsDoctor) {
                 updatedUserData = await prismaClient.doctor.update({
-                    where: { usuarioId: userId },
+                    where: { usuarioId: id },
                     data: {
                         Name,
                         LastName,
@@ -139,7 +139,7 @@ router.put(
                 });
             } else if (user.IsEmployee) {
                 updatedUserData = await prismaClient.empleado.update({
-                    where: { usuarioId: userId },
+                    where: { usuarioId: id },
                     data: {
                         Name,
                         Position,
@@ -153,7 +153,7 @@ router.put(
                 });
             } else if (user.IsAdministrator) {
                 updatedUserData = await prismaClient.usuarios.update({
-                    where: { Id: userId },
+                    where: { Id: id },
                     data: {
                         Email,
                     },
