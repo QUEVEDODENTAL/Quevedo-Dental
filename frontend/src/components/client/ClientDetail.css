@@ -43,6 +43,7 @@
     background-color: #1c5674;
 }
 
+
 /* Ajuste para pantallas pequeñas */
 @media (max-width: 768px) {
     .button-group {

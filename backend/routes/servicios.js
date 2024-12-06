@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const prisma = require('../utils/prismaClient'); // Asegúrate de importar correctamente tu cliente Prisma
+const prisma = require('../utils/prismaClient');
 
 // Obtener todos los servicios
 router.get('/view', async (req, res) => {
@@ -46,7 +46,7 @@ router.delete('/delete/:id', async (req, res) => {
     }
 });
 
-// Editar un servicio (Opcional)
+// Editar un servicio
 router.put('/edit/:id', async (req, res) => {
     const { id } = req.params;
     const { Service_Name, Price } = req.body;
@@ -69,5 +69,6 @@ router.put('/edit/:id', async (req, res) => {
         res.status(500).json({ error: 'Error al actualizar el servicio' });
     }
 });
+
 
 module.exports = router;

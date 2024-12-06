@@ -10,18 +10,17 @@ const router = express.Router();
 router.get('/profile', authenticateToken, async (req, res) => {
     console.log('Ruta /perfil/profile alcanzada');
     try {
-        const { id, role } = req.user; // Asume que userId y role están en req.user
+        const { id, role } = req.user;
 
-        // Verificar si el userId existe
+
         if (!id) {
             return res.status(400).json({ message: 'ID de usuario no encontrado' });
         }
 
 
-        console.log('User:', req.user);  // Esto te ayudará a ver si `req.user` tiene los valores esperados
+        console.log('User:', req.user);
 
 
-        // Obtener los datos básicos del usuario desde la tabla `usuarios`
         const user = await prismaClient.usuarios.findUnique({
             where: { Id: id },
             select: {
@@ -33,14 +32,12 @@ router.get('/profile', authenticateToken, async (req, res) => {
             },
         });
 
-        // Si no se encuentra el usuario
         if (!user) {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
 
         let userData;
 
-        // Según el rol del usuario, obtener más detalles
         if (user.IsDoctor) {
             userData = await prismaClient.doctor.findUnique({
                 where: { usuarioId: id },
@@ -71,14 +68,12 @@ router.get('/profile', authenticateToken, async (req, res) => {
                 },
             });
         } else if (user.IsAdministrator) {
-            // Si es administrador, solo se puede devolver la información básica
             userData = {
                 Name: 'Administrador',
                 Email: user.Email,
             };
         }
 
-        // Si no se encontró la información adicional
         if (!userData) {
             return res.status(404).json({ message: 'Información no encontrada' });
         }
@@ -100,12 +95,10 @@ router.put(
             const { id } = req.user;
             const { Name, LastName, Specialty, Cellphone, Email, Address, BirthDate, Gender, HireDate, Position } = req.body; // Extrae los datos del cuerpo de la solicitud
 
-            // Verificar si el userId existe
             if (!id) {
                 return res.status(400).json({ message: 'ID de usuario no encontrado' });
             }
 
-            // Verificar si el usuario es un doctor
             const user = await prismaClient.usuarios.findUnique({
                 where: { Id: id },
                 select: {
@@ -121,7 +114,6 @@ router.put(
 
             let updatedUserData;
 
-            // Actualizar los datos según el tipo de usuario
             if (user.IsDoctor) {
                 updatedUserData = await prismaClient.doctor.update({
                     where: { usuarioId: id },
@@ -160,7 +152,6 @@ router.put(
                 });
             }
 
-            // Si no se pudo actualizar
             if (!updatedUserData) {
                 return res.status(400).json({ message: 'Error al actualizar los datos' });
             }

@@ -11,13 +11,11 @@ router.post('/register', async (req, res) => {
         address, position, curp, rfc, salary, hireDate, password
     } = req.body;
 
-    // Validación de campos obligatorios
     if (!email || !name || !lastName || !password) {
         return res.status(400).json({ error: 'Campos obligatorios faltantes' });
     }
 
     try {
-        // Verificar si el email ya existe en la base de datos
         const existingEmployee = await prismaClient.empleado.findUnique({
             where: { Email: email },
         });
@@ -26,10 +24,8 @@ router.post('/register', async (req, res) => {
             return res.status(400).json({ error: "El correo electrónico ya está en uso." });
         }
 
-        // Encriptar la contraseña
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Datos para el registro del empleado
         const employeeData = {
             Name: name,
             LastName: lastName,
@@ -46,24 +42,19 @@ router.post('/register', async (req, res) => {
             Password: hashedPassword
         };
 
-        // Datos para el usuario
         const usuarioData = {
             Email: email,
             Password: hashedPassword,
             IsEmployee: true,
         };
 
-        // Iniciar la transacción
         const result = await prismaClient.$transaction(async (prisma) => {
-            // Crear el empleado
             const employee = await prisma.empleado.create({ data: employeeData });
 
-            // Crear el usuario para el empleado
             const usuario = await prisma.usuarios.create({
                 data: usuarioData,
             });
 
-            // Retornar ambos objetos si todo fue bien
             return { employee, usuario };
         });
 
@@ -96,7 +87,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Obtener detalles de un empleado por ID
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
 
