@@ -1,5 +1,5 @@
 import './Login.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext.jsx';
 
@@ -9,6 +9,19 @@ const Login = () => {
   const [email, setEmail] = useState(''); // Estado para el correo electrónico
   const [password, setPassword] = useState(''); // Estado para la contraseña
   const [error, setError] = useState(null); // Estado para los mensajes de error
+  const { auth } = useAuth();
+
+  if (auth.isAuthenticated) {
+    // Redirigir al dashboard según el rol
+    const dashboardPath = auth.role === 'admin'
+      ? '/admin/dashboard'
+      : auth.role === 'doctor'
+        ? '/doctor/dashboard'
+        : '/employee/dashboard';
+
+    return <Navigate to={dashboardPath} replace />;
+  }
+
 
   const handleReturn = () => {
     navigate('/'); // Redirige a la página principal al cancelar
@@ -22,7 +35,7 @@ const Login = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
-        credentials: 'include', // Asegura que se envíen cookies si las usas
+        credentials: 'include',
       });
 
       if (!response.ok) {
