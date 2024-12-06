@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './Antecedentesnopatologicos'
+import './AntecedentesPatologicos.css'
 
 const AntecedentesPatologicos = ({ pacienteId }) => {
   const [antecedentes, setAntecedentes] = useState({
