@@ -3,7 +3,7 @@ import './Perfil.css';
 
 const Perfil = () => {
   const [user, setUser] = useState(null);
-  const [originalUser, setOriginalUser] = useState(null); // Para restaurar los datos originales
+  const [originalUser, setOriginalUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Perfil = () => {
 
         const data = await response.json();
         setUser(data);
-        setOriginalUser(data); // Guardar copia original al cargar el perfil
+        setOriginalUser(data);
       } catch (error) {
         console.error(error);
       }
@@ -52,15 +52,26 @@ const Perfil = () => {
       const result = await response.json();
       console.log('Cambios guardados:', result);
       setIsEditing(false);
-      setOriginalUser(user); // Actualizar la copia original
+      setOriginalUser(user);
     } catch (error) {
       console.error('Error al guardar los cambios:', error);
     }
   };
 
   const handleCancelChanges = () => {
-    setUser(originalUser); // Restaurar datos originales
-    setIsEditing(false); // Salir del modo edición
+    setUser(originalUser);
+    setIsEditing(false);
+  };
+
+  // Formatear las fechas a "día/mes/año"
+  const formatDate = (dateString) => {
+    if (!dateString) return 'N/A';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    });
   };
 
   if (!user) return <p>Cargando...</p>;
@@ -93,7 +104,10 @@ const Perfil = () => {
           ) : (
             Object.entries(user).map(([key, value]) => (
               <p key={key}>
-                <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
+                <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong>{' '}
+                {key === 'BirthDate' || key === 'HireDate'
+                  ? formatDate(value)
+                  : value}
               </p>
             ))
           )}
