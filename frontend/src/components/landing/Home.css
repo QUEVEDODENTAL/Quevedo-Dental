@@ -53,16 +53,13 @@
   background-color: #0f2a42;
 }
 
-.home-banner-placeholder {
-  flex: 1;
-  width: 300px;
-  height: 300px;
-  background-color: pink;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.home-banner-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px; /* Ajusta según lo necesario */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 
 /* Estilos para la sección Sobre Nosotros */
 .home-sobre-nosotros-container {
@@ -140,4 +137,22 @@
 
 .home-arrow-up-icon {
   font-size: 40px;
+}
+
+.home-sobre-nosotros-images {
+  display: flex;
+  gap: 20px; /* Espaciado entre las imágenes */
+  margin-top: 20px;
+}
+
+.home-image-placeholder {
+  flex: 1; /* Divide el espacio entre las imágenes proporcionalmente */
+}
+
+.sobre-nosotros-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar las imágenes */
+  object-fit: cover; /* Asegura que las imágenes se ajusten bien al contenedor */
 }

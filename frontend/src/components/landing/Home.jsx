@@ -50,16 +50,18 @@ const Home = () => {
               consultorio
             </h1>
             <p className="home-banner-description">
-              Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-              archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
-              de las industrias desde el año 1500
+            Nos enorgullecemos de utilizar la tecnología más avanzada y las técnicas más actualizadas para asegurarnos de que cada uno de nuestros pacientes reciba el mejor cuidado posible. Nuestro objetivo es hacer que su visita sea lo más cómoda y agradable posible, para que siempre se sienta bienvenido y cuidado.
             </p>
             <button className="home-banner-button" onClick={handleLoginRedirect}>
               Conócenos
             </button>
           </div>
           <div className="home-banner-placeholder">
-            <h1>Imagen del doctor 1</h1>
+          <img
+            src="/assets/dentista.jpg"
+            alt="Dentista"
+            className="home-banner-image"
+          />
           </div>
         </div>
       </div>
@@ -72,26 +74,35 @@ const Home = () => {
 
       {/* Sección Sobre Nosotros */}
       <section className="home-sobre-nosotros-container" id="sobre-nosotros">
-        <div className="home-sobre-nosotros-content">
-          <div className="home-sobre-nosotros-text">
-            <h2>Sobre Nosotros</h2>
-            <p>
-              Somos expertos en estrategia, diseño y desarrollo dental.
-              Innovadores y solucionadores de problemas. Suficientemente
-              flexibles para adaptarnos a sus necesidades, pero lo suficientemente
-              sólidos como para ofrecer el más alto nivel de atención.
-            </p>
-          </div>
-          <div className="home-sobre-nosotros-images">
-            <div className="home-image-placeholder">
-              <h2>imagen 1</h2>
-            </div>
-            <div className="home-image-placeholder">
-              <h2>imagen 2</h2>
-            </div>
-          </div>
-        </div>
-      </section>
+  <div className="home-sobre-nosotros-content">
+    <div className="home-sobre-nosotros-text">
+      <h2>Sobre Nosotros</h2>
+      <p>
+        Somos expertos en estrategia, diseño y desarrollo dental.
+        Innovadores y solucionadores de problemas. Suficientemente
+        flexibles para adaptarnos a sus necesidades, pero lo suficientemente
+        sólidos como para ofrecer el más alto nivel de atención.
+      </p>
+    </div>
+    <div className="home-sobre-nosotros-images">
+      <div className="home-image-placeholder">
+        <img
+          src="/assets/sobrenosotros.jpg"
+          alt="Sobre Nosotros Imagen 1"
+          className="sobre-nosotros-image"
+        />
+      </div>
+      <div className="home-image-placeholder">
+        <img
+          src="/assets/sobrenosotros2.jpg"
+          alt="Sobre Nosotros Imagen 2"
+          className="sobre-nosotros-image"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Sección Nuestro Equipo */}
       <section className="home-nuestro-equipo-container" id="nuestro-equipo">

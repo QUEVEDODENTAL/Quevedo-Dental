@@ -1,51 +1,94 @@
 .carousel {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-    margin: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que las imágenes se ajusten sin deformarse */
+  border-radius: 10px; /* Mantén los bordes redondeados */
+}
+
+/* Estilo para los botones del carrusel */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 50%; /* Botones redondos */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 10px;
+}
+
+/* Efecto hover en los botones */
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1); /* Efecto de agrandamiento al pasar el cursor */
+}
+
+/* Responsivo: adapta la altura del carrusel a pantallas más pequeñas */
+@media (max-width: 768px) {
+  .carousel {
+    height: 300px;
   }
-  
-  .carousel-slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-  
+
   .carousel-slide {
-    flex: 0 0 100%;
-    height: 400px;
+    height: 300px;
   }
-  
+
   .carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1;
-    border-radius: 50%; /* Para hacerlo un círculo perfecto */
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 40px;
+    height: 40px;
   }
-  
-  .carousel-button.prev {
-    left: 10px;
+}
+
+@media (max-width: 480px) {
+  .carousel {
+    height: 250px;
   }
-  
-  .carousel-button.next {
-    right: 10px;
+
+  .carousel-slide {
+    height: 250px;
   }
-  
-  /* Cambio de color de fondo al pasar el cursor sobre la flecha */
-  .carousel-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+
+  .carousel-button {
+    width: 35px;
+    height: 35px;
   }
-  
+}
