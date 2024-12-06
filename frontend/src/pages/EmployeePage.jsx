@@ -4,12 +4,12 @@ import { Outlet } from 'react-router-dom';
 
 const EmployeePage = () => {
     return (
-        <div style={{ display: 'flex', height: '100vh' }}>
+<div style={{ display: 'flex' }}>
             {/* Sidebar persistente */}
             <Sidebar />
 
             {/* Contenido dinámico */}
-            <div style={{ flex: 1, padding: '1rem', }}>
+            <div style={{ flex: 1}}>
                 <Outlet />
             </div>
         </div>
