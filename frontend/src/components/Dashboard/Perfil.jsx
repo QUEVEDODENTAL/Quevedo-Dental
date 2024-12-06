@@ -3,6 +3,7 @@ import './Perfil.css';
 
 const Perfil = () => {
   const [user, setUser] = useState(null);
+  const [originalUser, setOriginalUser] = useState(null); // Para restaurar los datos originales
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
@@ -19,6 +20,7 @@ const Perfil = () => {
 
         const data = await response.json();
         setUser(data);
+        setOriginalUser(data); // Guardar copia original al cargar el perfil
       } catch (error) {
         console.error(error);
       }
@@ -33,22 +35,33 @@ const Perfil = () => {
   };
 
   const handleSaveChanges = async () => {
-    const response = await fetch('http://localhost:3000/perfil/update', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),  // user es el estado actualizado del perfil
-      credentials: 'include',  // Para asegurar que las cookies se envíen
-    });
+    try {
+      const response = await fetch('http://localhost:3000/perfil/update', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+        credentials: 'include',
+      });
 
-    if (!response.ok) {
-      throw new Error('Error al guardar los cambios');
+      if (!response.ok) {
+        throw new Error('Error al guardar los cambios');
+      }
+
+      const result = await response.json();
+      console.log('Cambios guardados:', result);
+      setIsEditing(false);
+      setOriginalUser(user); // Actualizar la copia original
+    } catch (error) {
+      console.error('Error al guardar los cambios:', error);
     }
-    const result = await response.json();
-    console.log(result);  // Esto te ayudará a ver la respuesta del servidor
   };
 
+  const handleCancelChanges = () => {
+    setUser(originalUser); // Restaurar datos originales
+    setIsEditing(false); // Salir del modo edición
+  };
 
   if (!user) return <p>Cargando...</p>;
 
@@ -86,13 +99,18 @@ const Perfil = () => {
           )}
         </div>
 
-        <button onClick={() => setIsEditing(!isEditing)} className="toggle-button">
-          {isEditing ? 'Guardar' : 'Editar'}
-        </button>
-
-        {isEditing && (
-          <button onClick={handleSaveChanges} className="save-button">
-            Guardar
+        {isEditing ? (
+          <div className="edit-buttons">
+            <button onClick={handleSaveChanges} className="toggle-button">
+              Guardar
+            </button>
+            <button onClick={handleCancelChanges} className="toggle-button">
+              Cancelar
+            </button>
+          </div>
+        ) : (
+          <button onClick={() => setIsEditing(true)} className="toggle-button">
+            Editar
           </button>
         )}
       </div>
