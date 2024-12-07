@@ -3,6 +3,7 @@ import AntecedentesPatologicos from "./Antecedentespatologicos";
 import AntecedentesNoPatologicos from "./Antecedentesnopatologicos";
 import Enfermedades from "./Enfermedades";
 import ExamenClinicoIntraoral from "./Examenclinicointraoral";
+import Odontograma from "./Odontograma";
 import './Historial.css';
 
 const Historial = () => {
@@ -51,6 +52,10 @@ const Historial = () => {
         <div className="bg-card">
           <AntecedentesNoPatologicos pacienteId={pacienteId} />
         </div>
+        <div className="bg-card">
+          <Odontograma pacienteId={ pacienteId} /> 
+        </div>
+
 
         <div className="bg-card">
           <Enfermedades pacienteId={pacienteId} />
