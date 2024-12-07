@@ -11,17 +11,13 @@ router.post('/register', async (req, res) => {
         hireDate, password
     } = req.body;
 
-    // Validación de campos obligatorios
     if (!email || !name || !lastName || !password) {
         return res.status(400).json({ error: 'Campos obligatorios faltantes' });
     }
-    // Verificar si el email ya existe en la base de datos
     try {
         const existingDoctor = await prismaClient.doctor.findUnique({ where: { Email: email } });
         if (existingDoctor) return res.status(400).json({ error: 'Correo en uso.' });
-        // Encriptar la contraseña
         const hashedPassword = await bcrypt.hash(password, 10);
-        // Datos para el registro del doctor
         const result = await prismaClient.$transaction(async (prisma) => {
             const doctor = await prisma.doctor.create({
                 data: {

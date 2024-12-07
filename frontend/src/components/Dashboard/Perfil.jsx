@@ -1,63 +1,132 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Perfil.css';
 
 const Perfil = () => {
-  const [dentista, setDentista] = useState({
-    nombre: 'Dr. Juan Pérez',
-    especialidad: 'Odontología General',
-    telefono: '+52 123 456 7890',
-    correo: 'juan.perez@dentista.com',
-    direccion: 'Calle Ficticia 123, Ciudad, Pais',
-    fechadeNacimiento: '1980-01-01',
-    experiencia: '15 primaveras en el campo de la odontología',
-    universidad: 'Puro ITE mi compa',
-  });
+  const [user, setUser] = useState(null);
+  const [originalUser, setOriginalUser] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
-  const [esEditando, setEsEditando] = useState(false);
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/perfil/profile', {
+          method: 'GET',
+          credentials: 'include',
+        });
 
-  const manejarCambio = ({ target: { name, value } }) =>
-    setDentista({ ...dentista, [name]: value });
+        if (!response.ok) {
+          throw new Error('Error al obtener el perfil');
+        }
+
+        const data = await response.json();
+        setUser(data);
+        setOriginalUser(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  const handleSaveChanges = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/perfil/update', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al guardar los cambios');
+      }
+
+      const result = await response.json();
+      console.log('Cambios guardados:', result);
+      setIsEditing(false);
+      setOriginalUser(user);
+    } catch (error) {
+      console.error('Error al guardar los cambios:', error);
+    }
+  };
+
+  const handleCancelChanges = () => {
+    setUser(originalUser);
+    setIsEditing(false);
+  };
+
+  // Formatear las fechas a "día/mes/año"
+  const formatDate = (dateString) => {
+    if (!dateString) return 'N/A';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    });
+  };
+
+  if (!user) return <p>Cargando...</p>;
 
   return (
     <div className="perfil-container">
       <div className="perfil-content">
-        {/* Círculo con las iniciales */}
         <div className="perfil-photo-container">
           <div className="circle">
             <span className="initials">
-              {dentista.nombre.split(' ').map((word) => word[0]).join('')}
+              {user.Name.split(' ').map((word) => word[0]).join('')}
             </span>
           </div>
         </div>
 
-        {/* Información del perfil */}
         <div className="perfil-info">
-          {esEditando ? (
-            Object.keys(dentista).map((key) => (
+          {isEditing ? (
+            Object.keys(user).map((key) => (
               <div key={key}>
                 <input
                   type="text"
                   name={key}
-                  value={dentista[key]}
-                  onChange={manejarCambio}
+                  value={user[key]}
+                  onChange={handleInputChange}
                   placeholder={key.charAt(0).toUpperCase() + key.slice(1)}
                   className="editable-input"
                 />
               </div>
             ))
           ) : (
-            Object.entries(dentista).map(([key, value]) => (
+            Object.entries(user).map(([key, value]) => (
               <p key={key}>
-                <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
+                <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong>{' '}
+                {key === 'BirthDate' || key === 'HireDate'
+                  ? formatDate(value)
+                  : value}
               </p>
             ))
           )}
         </div>
 
-        {/* Botón de alternancia entre editar y guardar */}
-        <button onClick={() => setEsEditando(!esEditando)} className="toggle-button">
-          {esEditando ? 'Guardar' : 'Editar'}
-        </button>
+        {isEditing ? (
+          <div className="edit-buttons">
+            <button onClick={handleSaveChanges} className="toggle-button">
+              Guardar
+            </button>
+            <button onClick={handleCancelChanges} className="toggle-button">
+              Cancelar
+            </button>
+          </div>
+        ) : (
+          <button onClick={() => setIsEditing(true)} className="toggle-button">
+            Editar
+          </button>
+        )}
       </div>
     </div>
   );

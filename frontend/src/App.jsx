@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';  // Quitar BrowserRouter (Router)
+import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Perfil from './components/Dashboard/Perfil';
 import Register from './components/register/Register';
@@ -12,6 +12,7 @@ import DoctorPage from './pages/DoctorPage';
 import EmployeePage from './pages/EmployeePage';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
+import ClienteDetails from './components/client/ClientDetails';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             >
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="paciente" element={<ClientList />} />
+              <Route path="paciente/:id" element={<ClienteDetails />} />
               <Route path="perfil" element={<Perfil />} />
               <Route path="register" element={<Register />} />
               <Route path="historial" element={<Historial />} />
@@ -42,6 +44,7 @@ function App() {
             >
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="paciente" element={<ClientList />} />
+              <Route path="paciente/:id" element={<ClienteDetails />} />
               <Route path="perfil" element={<Perfil />} />
               <Route path="historial" element={<Historial />} />
               <Route path="servicios" element={<Servicios />} />

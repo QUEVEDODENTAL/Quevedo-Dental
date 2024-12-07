@@ -1,48 +1,31 @@
-import { useState } from "react";
-import FormularioServicios from "./FormularioServicios";
-import ListaServicios from "./ListaServicios";
-import "./Servicios.css";
+import { useState, useEffect } from 'react';
+import FormularioServicios from './FormularioServicios';
+import ListaServicios from './ListaServicios';
+import './Servicios.css'; // Importa el archivo CSS
 
 const Servicios = () => {
   const [servicios, setServicios] = useState([]);
-  const [nuevoServicio, setNuevoServicio] = useState({ nombre: "", precio: "" });
-  const [editando, setEditando] = useState(false);
-  const [indexEditando, setIndexEditando] = useState(null);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setNuevoServicio({ ...nuevoServicio, [name]: value });
-  };
+  useEffect(() => {
+    fetchServicios();
+  }, []);
 
-  const handleAddServicio = (e) => {
-    e.preventDefault();
-    if (nuevoServicio.nombre.trim() && nuevoServicio.precio.trim()) {
-      if (editando) {
-        // Actualizar servicio
-        const serviciosActualizados = [...servicios];
-        serviciosActualizados[indexEditando] = nuevoServicio;
-        setServicios(serviciosActualizados);
-        setEditando(false);
-        setIndexEditando(null);
-      } else {
-        // Agregar nuevo servicio
-        setServicios([...servicios, nuevoServicio]);
-      }
-      setNuevoServicio({ nombre: "", precio: "" });
-    } else {
-      alert("Por favor, completa ambos campos");
+  const fetchServicios = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/servicios/view');
+      const data = await response.json();
+      setServicios(data);
+    } catch (error) {
+      console.error('Error al obtener los servicios:', error);
     }
   };
 
-  const handleEditarServicio = (index) => {
-    setNuevoServicio(servicios[index]);
-    setEditando(true);
-    setIndexEditando(index);
+  const onServicioEditado = () => {
+    fetchServicios();
   };
 
-  const handleEliminarServicio = (index) => {
-    const serviciosActualizados = servicios.filter((_, i) => i !== index);
-    setServicios(serviciosActualizados);
+  const onServicioEliminado = () => {
+    fetchServicios();
   };
 
   return (

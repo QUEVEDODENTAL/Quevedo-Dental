@@ -123,40 +123,67 @@ async function main() {
 
     // Insertar datos de doctores
     for (const doctor of doctorsData) {
-
-        const createdDoctor = await prisma.doctor.create({
+        // Crear el usuario primero
+        const createdUser = await prisma.usuarios.create({
             data: {
-                ...doctor,
-                Password: password,
-            },
-        });
-
-        await prisma.usuarios.create({
-            data: {
-                Email: createdDoctor.Email,
+                Email: doctor.Email,
                 Password: password,
                 IsDoctor: true,
                 IsEmployee: false,
+            },
+        });
+
+        // Ahora crear el doctor y asociarlo con el usuario
+        const createdDoctor = await prisma.doctor.create({
+            data: {
+                Name: doctor.Name,
+                LastName: doctor.LastName,
+                Age: doctor.Age,
+                BirthDate: doctor.BirthDate,
+                Gender: doctor.Gender,
+                Specialty: doctor.Specialty,
+                Address: doctor.Address,
+                Cellphone: doctor.Cellphone,
+                CURP: doctor.CURP,
+                LicenseNumber: doctor.LicenseNumber,
+                MedicalLicense: doctor.MedicalLicense,
+                Email: doctor.Email,
+                Password: password,
+                HireDate: doctor.HireDate,
+                usuarioId: createdUser.Id,
             },
         });
     }
 
     // Insertar datos de empleados
     for (const employee of employeesData) {
-
-        const createdEmployee = await prisma.empleado.create({
+        // Crear el usuario primero
+        const createdUser = await prisma.usuarios.create({
             data: {
-                ...employee,
-                Password: password,
+                Email: employee.Email,
+                Password: password, // Aquí se puede usar una contraseña generada o fija
+                IsDoctor: false,
+                IsEmployee: true,
             },
         });
 
-        await prisma.usuarios.create({
+        // Ahora crear el empleado y asociarlo con el usuario
+        const createdEmployee = await prisma.empleado.create({
             data: {
-                Email: createdEmployee.Email,
+                Name: employee.Name,
+                LastName: employee.LastName,
+                BirthDate: employee.BirthDate,
+                Gender: employee.Gender,
+                Cellphone: employee.Cellphone,
+                Address: employee.Address,
+                Position: employee.Position,
+                CURP: employee.CURP,
+                Email: employee.Email,
                 Password: password,
-                IsDoctor: false,
-                IsEmployee: true,
+                RFC: employee.RFC,
+                Salary: employee.Salary,
+                HireDate: employee.HireDate,
+                usuarioId: createdUser.Id, // Relacionar con el usuario recién creado
             },
         });
     }

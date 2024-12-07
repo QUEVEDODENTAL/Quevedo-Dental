@@ -25,7 +25,6 @@ router.post('/login', async (req, res) => {
             { expiresIn: '1h' }
         );
 
-        // Establecer la cookie antes de enviar la respuesta
         res.cookie('token', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
@@ -33,7 +32,6 @@ router.post('/login', async (req, res) => {
             maxAge: 3600000, // 1 hora
         });
 
-        // Enviar solo una respuesta
         res.json({ message: 'Inicio de sesión exitoso', role: user.IsDoctor ? 'doctor' : user.IsAdministrator ? 'admin' : 'employee' });
 
     } catch (error) {
@@ -51,17 +49,14 @@ router.get('/validate-token', async (req, res) => {
     }
 
     try {
-        // Verificamos el token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        // Obtenemos el usuario por el ID decodificado
         const user = await prismaClient.usuarios.findUnique({ where: { Id: decoded.id } });
 
         if (!user) {
             return res.status(401).json({ error: 'User not found' });
         }
 
-        // Retornamos el rol del usuario
         const role = user.IsDoctor ? 'doctor' : user.IsAdministrator ? 'admin' : 'employee';
         res.json({ role });
     } catch (error) {
@@ -71,7 +66,6 @@ router.get('/validate-token', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-    // Eliminar la cookie que contiene el token
     res.clearCookie('token', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
