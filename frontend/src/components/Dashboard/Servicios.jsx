@@ -30,17 +30,19 @@ const Servicios = () => {
 
   return (
     <div className="servicios-container">
-      <h1 className="service-title">Servicios</h1>
-      <FormularioServicios
-        nuevoServicio={nuevoServicio}
-        handleChange={handleChange}
-        handleAddServicio={handleAddServicio}
-      />
-      <ListaServicios
-        servicios={servicios}
-        handleEditarServicio={handleEditarServicio}
-        handleEliminarServicio={handleEliminarServicio}
-      />
+      {/* Formulario */}
+      <div className="formulario-servicios">
+        <FormularioServicios onServicioCreado={fetchServicios} />
+      </div>
+
+      {/* Lista de Servicios */}
+      <div className="servicios-list">
+        <ListaServicios
+          servicios={servicios}
+          onServicioEditado={onServicioEditado}
+          onServicioEliminado={onServicioEliminado}
+        />
+      </div>
     </div>
   );
 };
