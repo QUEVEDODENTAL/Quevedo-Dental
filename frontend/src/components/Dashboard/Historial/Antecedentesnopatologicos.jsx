@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-<<<<<<< HEAD:frontend/src/components/Antecedentesnopatologicos.jsx
-import '../styles/AntecedentesNoPatologicos.css'
-=======
 import './AntecedentesNoPatologicos.css'
->>>>>>> main:frontend/src/components/Dashboard/Historial/Antecedentesnopatologicos.jsx
 
 const AntecedentesNoPatologicos = ({ pacienteId }) => {
   const [antecedentesNoPatologicos, setAntecedentesNoPatologicos] = useState({
