@@ -1,19 +1,22 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom'; // Para redireccionar a otra ruta
-import { useAuth } from '../context/AuthContext'; // Hook personalizado para acceder al contexto de autenticación
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-// Componente `ProtectedRoute` para restringir acceso a rutas según el estado de autenticación
-const ProtectedRoute = ({ children }) => {
-    // Accede al valor `auth` del contexto de autenticación
+const PrivateRoute = ({ element: Component, role, ...rest }) => {
     const { auth } = useAuth();
 
-    // Si `auth` es `false`, redirige a la página de login
-    if (!auth) {
+    // Si no está autenticado, redirigir al login
+    if (!auth.isAuthenticated) {
         return <Navigate to="/login" />;
     }
 
-    // Si `auth` es `true`, renderiza el contenido protegido (los `children`)
-    return children;
+    // Si el rol no coincide, redirigir a una página de acceso no autorizado
+    if (auth.role !== role) {
+        return <Navigate to="/unauthorized" />;
+    }
+
+    // Si está autenticado y tiene el rol correcto, renderiza el componente
+    return <>{Component}</>;
 };
 
-export default ProtectedRoute;
+export default PrivateRoute;

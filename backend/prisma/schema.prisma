@@ -41,20 +41,31 @@ model bitacora {
 }
 
 model clientes {
-  id         Int       @id @default(autoincrement())
-  Name       String    @db.VarChar(100)
-  LastName   String    @db.VarChar(100)
-  SEX        String    @db.Char(9)
+  id         Int        @id @default(autoincrement())
+  Name       String     @db.VarChar(100)
+  LastName   String     @db.VarChar(100)
+  SEX        String     @db.Char(9)
   Age        Int
-  BirthDate  DateTime? @db.Date
-  Address    String?   @db.VarChar(255)
-  Phone      String?   @db.VarChar(20)
-  CURP       String    @db.VarChar(18)
-  Email      String?   @db.VarChar(100)
-  BloodType  String    @db.VarChar(3)
-  Occupation String    @db.VarChar(255)
-  Education  String    @db.VarChar(255)
+  BirthDate  DateTime?  @db.Date
+  Address    String?    @db.VarChar(255)
+  Phone      String?    @db.VarChar(20)
+  CURP       String     @db.VarChar(18)
+  Email      String?    @db.VarChar(100)
+  BloodType  String     @db.VarChar(3)
+  Occupation String     @db.VarChar(255)
+  Education  String     @db.VarChar(255)
   image_data Bytes?
+  servicios  Servicio[]
+}
+
+model Servicio {
+  id              Int      @id @default(autoincrement())
+  service_name    String   @db.VarChar(100)
+  price           Decimal  @db.Decimal(10, 2)
+  precio_temporal Decimal? @db.Decimal(10, 2)
+  created_at      DateTime @default(now())
+  cliente_id      Int
+  cliente         clientes @relation(fields: [cliente_id], references: [id])
 }
 
 model doctor {
@@ -75,6 +86,8 @@ model doctor {
   HireDate          DateTime       @db.Date
   Password          String         @db.VarChar(100)
   image_data_doctor Bytes?
+  usuarioId         Int            @unique // Relación uno a uno con usuarios
+  usuario           usuarios       @relation(fields: [usuarioId], references: [Id]) // Relación con usuarios
 }
 
 model empleado {
@@ -93,6 +106,8 @@ model empleado {
   HireDate           DateTime?        @db.Date
   Password           String           @db.VarChar(100)
   image_data_emleado Bytes?
+  usuarioId          Int              @unique // Relación uno a uno con usuarios
+  usuario            usuarios         @relation(fields: [usuarioId], references: [Id]) // Relación con usuarios
 }
 
 model enfermedades {
@@ -136,12 +151,14 @@ model permisos {
 }
 
 model usuarios {
-  Id              Int     @id @default(autoincrement())
-  Email           String  @unique @db.VarChar(100)
-  Password        String  @db.VarChar(100)
-  IsAdministrator Boolean @default(false)
-  IsDoctor        Boolean @default(false)
-  IsEmployee      Boolean @default(false)
+  Id              Int       @id @default(autoincrement())
+  Email           String    @unique
+  Password        String
+  IsAdministrator Boolean   @default(false)
+  IsDoctor        Boolean   @default(false)
+  IsEmployee      Boolean   @default(false)
+  doctor          doctor?
+  empleado        empleado?
 }
 
 model servicios {

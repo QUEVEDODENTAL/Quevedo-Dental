@@ -1,0 +1,69 @@
+  
+  .form-section-enfermedades h2 {
+    text-align:left;
+    color: #2a4d69;
+    margin-bottom: 20px;
+  }
+  
+  .form-section-enfermedades label {
+    display: block;
+    font-weight: bold;
+    color: #4a4a4a;
+    margin-bottom: 8px;
+  }
+  
+  .form-section-enfermedades input[type="text"],
+  .form-section-enfermedades input[type="radio"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  .form-section-enfermedades input[type="radio"] {
+    width: auto;
+    margin-right: 8px;
+  }
+  
+  .form-section-enfermedades .options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .form-section-enfermedades .options div {
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-section-enfermedades .options label {
+    margin-left: 5px;
+  }
+  
+  .form-section-enfermedades input[type="text"]:focus,
+  .form-section-enfermedades input[type="radio"]:focus {
+    outline: none;
+    border-color: #2a4d69;
+    box-shadow: 0 0 4px rgba(42, 77, 105, 0.5);
+  }
+  
+  .form-section-enfermedades input[type="text"] {
+    margin-bottom: 20px;
+  }
+  
+  .form-section-enfermedades .causas-section {
+    margin-top: 15px;
+  }
+  
+  .form-section-enfermedades input[type="text"]::placeholder {
+    color: #aaa;
+  }
+  
+  .form-section-enfermedades input[type="radio"]:checked + label {
+    font-weight: bold;
+    color: #2a4d69;
+  }
+  
