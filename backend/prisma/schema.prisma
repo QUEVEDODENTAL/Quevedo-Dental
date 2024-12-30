@@ -66,6 +66,8 @@ model Servicio {
   created_at      DateTime @default(now())
   cliente_id      Int
   cliente         clientes @relation(fields: [cliente_id], references: [id])
+
+  @@index([cliente_id], map: "Servicio_cliente_id_fkey")
 }
 
 model doctor {
@@ -86,8 +88,8 @@ model doctor {
   HireDate          DateTime       @db.Date
   Password          String         @db.VarChar(100)
   image_data_doctor Bytes?
-  usuarioId         Int            @unique // Relación uno a uno con usuarios
-  usuario           usuarios       @relation(fields: [usuarioId], references: [Id]) // Relación con usuarios
+  usuarioId         Int            @unique
+  usuario           usuarios       @relation(fields: [usuarioId], references: [Id])
 }
 
 model empleado {
@@ -106,8 +108,8 @@ model empleado {
   HireDate           DateTime?        @db.Date
   Password           String           @db.VarChar(100)
   image_data_emleado Bytes?
-  usuarioId          Int              @unique // Relación uno a uno con usuarios
-  usuario            usuarios         @relation(fields: [usuarioId], references: [Id]) // Relación con usuarios
+  usuarioId          Int              @unique
+  usuario            usuarios         @relation(fields: [usuarioId], references: [Id])
 }
 
 model enfermedades {
