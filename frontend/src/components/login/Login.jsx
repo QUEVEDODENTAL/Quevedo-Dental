@@ -2,7 +2,6 @@ import './Login.css';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext.jsx';
-import BASE_URL from '../../config'; // Importa la base URL desde el archivo de configuración
 
 const Login = () => {
   const { setAuth } = useAuth(); // Manejo del estado de autenticación global
@@ -23,6 +22,7 @@ const Login = () => {
     return <Navigate to={dashboardPath} replace />;
   }
 
+
   const handleReturn = () => {
     navigate('/'); // Redirige a la página principal al cancelar
   };
@@ -31,7 +31,7 @@ const Login = () => {
     e.preventDefault(); // Previene el comportamiento predeterminado del formulario
 
     try {
-      const response = await fetch(`${BASE_URL}/auth/login`, { // Usa la base URL dinámica
+      const response = await fetch('{http://localhost}:3000/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
