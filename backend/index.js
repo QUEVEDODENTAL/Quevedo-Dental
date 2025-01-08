@@ -8,10 +8,20 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Configuración de middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: 'http://localhost:3001', credentials: true }));
+app.use(
+  cors({
+    origin: 'https://quevedodental.netlify.app', // URL del frontend desplegado en Netlify
+    credentials: true, // Habilita el intercambio de cookies
+  })
+);
 
+// Rutas
 app.use('/', routes);
 
-app.listen(port, () => console.log(`Servidor corriendo en http://localhost:${port}`));
+// Inicialización del servidor
+app.listen(port, () =>
+  console.log(`Servidor corriendo en http://localhost:${port}`)
+);
