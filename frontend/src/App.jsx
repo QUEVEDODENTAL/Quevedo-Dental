@@ -1,59 +1,66 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import ProtectedRoute from './components/ProtectedRoute';
+import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Perfil from './pages/Perfil';
-import Register from './pages/Register';
-import ClientList from './pages/ClientList';
-import ClientDetails from './components/ClientDetails';
-import Servicios from './pages/Servicios';
-import Historial from './pages/Historial';
-import Odontograma from './components/Odontograma';
+import Perfil from './components/Dashboard/Perfil';
+import Register from './components/register/Register';
+import ClientList from './components/client/ClientList';
+import Servicios from './components/Dashboard/Servicios';
+import Historial from './components/Dashboard/Historial/Historial';
+import PrivateRoute from './components/ProtectedRoute';
+import AdminPage from './pages/AdminPage';
+import Dashboard from './components/Dashboard/Dashboard';
+import DoctorPage from './pages/DoctorPage';
+import EmployeePage from './pages/EmployeePage';
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import ClienteDetails from './components/client/ClientDetails';
 
 function App() {
-  const location = useLocation();
-
-  // Condiciones para mostrar Header y Footer solo en Home y Login
-  const isHomePage = location.pathname === '/';
-  const isLoginPage = location.pathname === '/login';
-
   return (
     <AuthProvider>
       <div style={{ display: 'flex' }}>
-        {/* Muestra el Sidebar excepto en Home y Login */}
-        {!isHomePage && !isLoginPage && <Sidebar />}
-        
         <div style={{ flex: 1 }}>
-          {/* Solo muestra el Header y Footer si estamos en Home o Login */}
-          {(isHomePage || isLoginPage) && <Header />}
-          
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route 
-              path="/dashboard" 
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              } 
-            />
-            <Route path="/perfil" element={<Perfil />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/clientes" element={<ClientList />} />
-            <Route path="/clientes/:id" element={<ClientDetails />} />
-            <Route path="/servicios" element={<Servicios />} />
-            <Route path="/historial" element={<Historial />} />
-            <Route path="/odontograma" element={<Odontograma />} />
+            {/* Rutas públicas */}
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<LoginPage />} />
+
+            {/* Rutas protegidas */}
+            <Route
+              path="/admin/*"
+              element={<PrivateRoute element={<AdminPage />} role="admin" />}
+            >
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="paciente" element={<ClientList />} />
+              <Route path="paciente/:id" element={<ClienteDetails />} />
+              <Route path="perfil" element={<Perfil />} />
+              <Route path="register" element={<Register />} />
+              <Route path="historial" element={<Historial />} />
+              <Route path="servicios" element={<Servicios />} />
+            </Route>
+
+            <Route
+              path="/doctor/*"
+              element={<PrivateRoute element={<DoctorPage />} role="doctor" />}
+            >
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="paciente" element={<ClientList />} />
+              <Route path="paciente/:id" element={<ClienteDetails />} />
+              <Route path="perfil" element={<Perfil />} />
+              <Route path="historial" element={<Historial />} />
+              <Route path="servicios" element={<Servicios />} />
+            </Route>
+
+            <Route
+              path="/employee/*"
+              element={<PrivateRoute element={<EmployeePage />} role="employee" />}
+            >
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="perfil" element={<Perfil />} />
+              <Route path="servicios" element={<Servicios />} />
+            </Route>
+
+
           </Routes>
-          
-          {/* Solo muestra el Footer si estamos en Home o Login */}
-          {(isHomePage || isLoginPage) && <Footer />}
         </div>
       </div>
     </AuthProvider>

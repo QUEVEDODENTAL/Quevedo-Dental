@@ -1,38 +1,57 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Creamos un contexto para la autenticación
+// Contexto de autenticaci√≥
 const AuthContext = createContext();
 
-// Definimos el componente `AuthProvider`, que envuelve la aplicación o partes de ella
+export const useAuth = () => useContext(AuthContext);
+
 export const AuthProvider = ({ children }) => {
-    // Estado de autenticación, inicializado como `false` (no autenticado)
-    const [auth, setAuth] = useState(false);
+    const [auth, setAuth] = useState(() => {
+        const savedAuth = localStorage.getItem('auth');
+        return savedAuth ? JSON.parse(savedAuth) : { isAuthenticated: false, role: null };
+    });
 
     useEffect(() => {
-        // Esta función se ejecuta cuando el componente se monta.
-        // Se encarga de verificar si el usuario tiene una sesión activa.
-        const checkAuth = async () => {
+        const validateToken = async () => {
             try {
-                const response = await fetch('http://localhost:3000/protected-route', {
-                    credentials: 'include', // Incluye cookies en la solicitud
+                const response = await fetch('http://localhost:3000/auth/validate-token', {
+                    method: 'GET',
+                    credentials: 'include',
                 });
-                setAuth(response.ok); // Si la respuesta es exitosa (200), actualiza `auth` a `true`
+
+                if (response.ok) {
+                    const data = await response.json();
+                    setAuth({
+                        isAuthenticated: true,
+                        role: data.role,
+                    });
+                    localStorage.setItem('auth', JSON.stringify({ isAuthenticated: true, role: data.role }));
+                } else {
+                    setAuth({
+                        isAuthenticated: false,
+                        role: null,
+                    });
+                    localStorage.removeItem('auth');
+                }
             } catch (error) {
-                console.error("Error verifying auth:", error);
-                setAuth(false); // Si ocurre un error, asegura que `auth` sea `false`
+                console.error('Error al validar el token:', error);
+                setAuth({
+                    isAuthenticated: false,
+                    role: null,
+                });
+                localStorage.removeItem('auth');
             }
         };
 
-        checkAuth(); // Llamada inicial para verificar el estado de autenticación al cargar
+
+
+        validateToken();
     }, []);
 
     return (
-        // Proveedor que envuelve a los hijos y permite que accedan al valor de `auth` y a la función `setAuth`
         <AuthContext.Provider value={{ auth, setAuth }}>
             {children}
         </AuthContext.Provider>
     );
 };
 
-// Custom hook `useAuth` para acceder fácilmente a los valores de `AuthContext`
-export const useAuth = () => useContext(AuthContext);

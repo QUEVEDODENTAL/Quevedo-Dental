@@ -1,0 +1,90 @@
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem;
+    background-color: #f0f2f5;
+    font-family: "Poppins", sans-serif;
+    height: 100vh; /* Altura del viewport */
+    overflow: hidden; /* Evitar scroll en el contenedor principal */
+}
+
+.form-container-register {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh; /* Altura máxima del formulario */
+    overflow-y: auto; /* Habilitar scroll vertical */
+}
+
+
+.user-type-selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+
+.horizontal-form .form-group {
+    justify-content: space-evenly;
+}
+
+input,
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    width: 48%;
+    box-sizing: border-box;
+}
+
+input[type="date"],
+input[type="number"],
+input[type="password"],
+select {
+    width: 100%;
+}
+
+.register-button {
+    background-color: #133c55;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.register-button:hover {
+    background-color: #0f2a42;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .form-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    input,
+    select {
+        width: 100%;
+    }
+}

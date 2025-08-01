@@ -1,0 +1,77 @@
+
+  .examen-clinico h2 {
+    text-align:start;
+    color: #2a4d69;
+    margin-bottom: 20px;
+  }
+  
+  .examen-clinico div {
+    margin-bottom: 20px;
+  }
+  
+  .examen-clinico label {
+    display: block;
+    font-weight: bold;
+    color: #4a4a4a;
+    margin-bottom: 8px;
+  }
+  
+  .examen-clinico input[type="date"],
+  .examen-clinico input[type="text"],
+  .examen-clinico input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background-color: #fff;
+  }
+  
+  .examen-clinico input[type="date"]:focus,
+  .examen-clinico input[type="text"]:focus,
+  .examen-clinico input[type="number"]:focus {
+    outline: none;
+    border-color: #2a4d69;
+    box-shadow: 0 0 5px rgba(42, 77, 105, 0.4);
+  }
+  
+  .examen-clinico input::placeholder {
+    color: #aaa;
+  }
+  
+  .examen-clinico button {
+    padding: 12px 20px;
+    background-color: #2a4d69;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .examen-clinico button:hover {
+    background-color: #1e3c52;
+  }
+  
+  .examen-clinico button:focus {
+    outline: none;
+  }
+  
+  .examen-clinico input[type="radio"],
+  .examen-clinico input[type="checkbox"] {
+    margin-right: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .examen-clinico {
+      padding: 20px;
+    }
+  
+    .examen-clinico h2 {
+      font-size: 1.5em;
+    }
+  }  

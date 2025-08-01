@@ -1,0 +1,77 @@
+
+  
+  .antecedentes-patologicos h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2a4d69;
+  }
+  
+  .antecedentes-patologicos div {
+    margin-bottom: 15px;
+  }
+  
+  .antecedentes-patologicos label {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #4a4a4a;
+  }
+  
+  .antecedentes-patologicos input[type="text"],
+  .antecedentes-patologicos input[type="date"],
+  .antecedentes-patologicos select,
+  .antecedentes-patologicos textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  .antecedentes-patologicos input[type="checkbox"] {
+    margin: 0 5px 0 0; /* Espaciado reducido entre el checkbox y el texto */
+    transform: scale(1.1); /* Ajusta ligeramente el tamaño del checkbox */
+  }
+  
+  .antecedentes-patologicos textarea {
+    height: 80px;
+    resize: vertical;
+  }
+  
+  .antecedentes-patologicos button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #2a4d69;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .antecedentes-patologicos button:hover {
+    background-color: #1e3c54;
+  }
+  
+  .antecedentes-patologicos select {
+    appearance: none;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .antecedentes-patologicos select:focus {
+    outline: none;
+    border-color: #2a4d69;
+  }
+  
+  .antecedentes-patologicos textarea:focus,
+  .antecedentes-patologicos input:focus {
+    outline: none;
+    border-color: #2a4d69;
+    box-shadow: 0 0 4px rgba(42, 77, 105, 0.5);
+  }
+  
